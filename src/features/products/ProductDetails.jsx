@@ -37,10 +37,11 @@ export default function ProductDetails() {
       <div className="mt-5 relative pb-20">
         <ScrollableProductImages/>
         <section className='mt-3'>
-            <h1 className='font-serif font-semibold text-[2rem] leading-tight text-[#212121]'>{product?.name}</h1>
+            <h1 className='font-serif font-semibold text-[1.75rem] leading-tight text-[#212121]'>{product?.name}</h1>
             <p className='text-[1.35rem] text-dark-gray'>{product?.category}</p>
             <div className="flex items-center gap-2">
-              <span className="text-[1.35rem]">{`(${product.reviews.legth})`}</span><StarRating rating={calculateAvgRating(product.Reviews)}/>
+              <StarRating rating={calculateAvgRating(product?.reviews)}/>
+              <span className="text-[1.35rem]">{`(${calculateAvgRating(product?.reviews)})`}</span>
             </div>
             <p className='mt-4 text-[1.5rem] font-semibold text-[#212121]'>{formatCurrency(product?.price)}</p>
         </section>
