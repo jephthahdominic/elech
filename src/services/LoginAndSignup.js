@@ -19,7 +19,10 @@ export async function createUser(email, password){
 }
 
 export async function verifyEmail(email){
-    sendSignInLinkToEmail(auth, email, actionCodeSettings)
+   const data = await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+   if(data){
+    console.log(data)
+   }
 }
 
 

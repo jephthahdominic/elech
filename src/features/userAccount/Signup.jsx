@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 import Header from "../../ui/Header";
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
-import { createUser } from '../../services/LoginAndSignup';
+import { createUser, verifyEmail } from '../../services/LoginAndSignup';
 
 export default function Signup() {
 
@@ -41,7 +41,8 @@ export default function Signup() {
     e.preventDefault()
     const user = await createUser(formData.email, formData.password);
     if(user){
-      console.log(user)
+      const data = await verifyEmail(formData.email);
+      console.log(data)
     }
   }
 
