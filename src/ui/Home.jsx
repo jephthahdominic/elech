@@ -4,9 +4,10 @@ import Banner from "./Banner";
 import SearchBar from "./SearchBar";
 import { useProducts } from "../features/products/ProductContext";
 import { useEffect } from "react";
+import Loader from "./Loader";
 
 export default function Home() {
-  const {getProducts, products} = useProducts();
+  const {getProducts, products, isLoading} = useProducts();
   
   useEffect(()=>{
     function fetchProducts(){
@@ -14,6 +15,8 @@ export default function Home() {
     }
     fetchProducts()
   }, [])
+
+  if(isLoading) return <Loader/>
   
   return (
     <div>
