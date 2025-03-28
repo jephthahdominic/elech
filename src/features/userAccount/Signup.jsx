@@ -48,6 +48,7 @@ export default function Signup() {
 
   return (
     <div className="h-screen">
+      <Header />
       <div className="py-3 px-5 mt-10">
         <h1 className="text-[#212121] text-[1.75rem] font-playfair font-semibold">Sign up to continue shopping</h1>
         <form className="mt-4 flex flex-col items-center gap-5">
