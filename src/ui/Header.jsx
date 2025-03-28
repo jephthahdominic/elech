@@ -2,7 +2,7 @@ import { FiMenu, FiSearch, FiShoppingCart } from 'react-icons/fi'
 import Logo from './Logo'
 import { Link } from 'react-router-dom'
 
-export default function Header() {
+export default function Header({toggles, cart}) {
   return (
     <header className='w-full py-3 px-4 shadow-md flex items-center justify-between'>
         <div className='flex-1 flex items-center gap-10'>
@@ -10,12 +10,12 @@ export default function Header() {
           <input placeholder='Search for anything here'  className='w-1/3 px-4 py-2 rounded-full max-xl:hidden
            border-dark-gray focus:outline-none' />
         </div>
-        <div className='flex gap-8 text-[24px]'>
-          <Link to='/cart' className='relative'>
+        {toggles && <div className='flex gap-8 text-[24px]'>
+          {cart && <Link to='/cart' className='relative'>
             <FiShoppingCart />
-          </Link>
+          </Link>}
           <button><FiMenu /></button>
-        </div>
+        </div>}
     </header>
   )
 }
