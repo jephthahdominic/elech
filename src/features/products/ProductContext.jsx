@@ -6,6 +6,7 @@ const ProductContext = createContext();
 
 export function ProductsProvider({children}){
     const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true)
 
     function getProducts(){
         const dbRef = ref(database, 'products');
@@ -16,7 +17,8 @@ export function ProductsProvider({children}){
                     id: key,
                     ...data[key]
                 }))
-                setProducts(products)
+                setProducts(products);
+                setIsLoading(false)
             }else{
                 throw new Error("Failed to fetch data")
             }
@@ -43,13 +45,12 @@ export function ProductsProvider({children}){
         onValue(dbRef, (snapshot)=>{
             const data = snapshot.val();
             if(data){
-                const results = Object.values(data).filter(result => result.name.toLowerCase().includes(searchQuery.toLowerCase()) || result.category.toLowerCase().includes(searchQuery.toLowerCase()) )
-                const appendIdToResult = Object.keys(results).map((key)=>({
-                    id:Number(key)+1,
-                    ...results[key]
-                }))
-                callback(appendIdToResult)
-                console.log(appendIdToResult)
+                const results = Object.keys(data).map((key)=>({
+                    id: key,
+                    ...data[key]
+                })).filter(result => result.name.toLowerCase().includes(searchQuery.toLowerCase()) || result.category.toLowerCase().includes(searchQuery.toLowerCase()) )
+                console.log(results)
+                callback(results)
             }else{
                 callback([])
             }
@@ -60,6 +61,8 @@ export function ProductsProvider({children}){
     return (
         <ProductContext.Provider value={{
             products, 
+            isLoading,
+            setIsLoading,
             getProducts, 
             getProductById,
             searchDatabaseByName

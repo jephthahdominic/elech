@@ -9,6 +9,8 @@ import { ProductsProvider } from "./features/products/ProductContext"
 import Products from "./features/products/Products"
 import { OrderProvider } from "./features/order/OrderContext"
 import SearchProducts from "./features/products/SearchProducts"
+import Login from "./features/userAccount/Login"
+import Signup from "./features/userAccount/Signup"
 
 const router = createBrowserRouter([
   {
@@ -32,10 +34,6 @@ const router = createBrowserRouter([
         element: <OrderProvider><ProductDetails /></OrderProvider>
       },
       {
-        path: "/cart",
-        element: <Cart />
-      },
-      {
         path: "/order",
         element: <CreateOrder />
       },
@@ -45,7 +43,19 @@ const router = createBrowserRouter([
         errorElement: <Error />
       }
     ]
-  }
+  },
+  {
+    path: "/cart",
+    element: <Cart />
+  },
+  {
+    path: "/login",
+    element: <Login />
+  },
+  {
+    path: "/signup",
+    element: <Signup />
+  },
 ])
 
 export default function App() {

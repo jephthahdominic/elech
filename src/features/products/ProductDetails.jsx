@@ -9,7 +9,6 @@ import Description from "./Description";
 import ScrollableProductImages from "./ScrollableProductImages";
 import SearchBar from "../../ui/SearchBar";
 import { BiChevronLeft } from "react-icons/bi";
-import { calculateAvgRating, StarRating } from "./ProductRating";
 
 export default function ProductDetails() {
   const {productId} = useParams();
@@ -37,13 +36,9 @@ export default function ProductDetails() {
       <div className="mt-5 relative pb-20">
         <ScrollableProductImages/>
         <section className='mt-3'>
-            <h1 className='font-serif font-semibold text-[1.75rem] leading-tight text-[#212121]'>{product?.name}</h1>
-            <p className='text-[1.35rem] text-dark-gray'>{product?.category}</p>
-            <div className="flex items-center gap-2">
-              <StarRating rating={calculateAvgRating(product?.reviews)}/>
-              <span className="text-[1.35rem]">{`(${calculateAvgRating(product?.reviews)})`}</span>
-            </div>
-            <p className='mt-4 text-[1.5rem] font-semibold text-[#212121]'>{formatCurrency(product?.price)}</p>
+            <h1 className='font-playfair font-regular text-[2rem] leading-tight'>{product?.name}</h1>
+            <p className='text-[1.35rem] text-slate-500'>{product?.category}</p>
+            <p className='mt-4 text-[1.5rem] font-regular text-[#212121]'>{formatCurrency(product?.price)}</p>
         </section>
         <section>
           <SelectSize/>

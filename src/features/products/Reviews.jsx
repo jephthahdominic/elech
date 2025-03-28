@@ -12,10 +12,10 @@ export default function Reviews({product}) {
     <div className='p-4 px-1 mt-6 '>
       <header className='flex items-center justify-between'>
         <h2 className='font-sans font-regular text-[1.5rem]'>Top reviews</h2>
-        <div className='flex items-center gap-1'>
+        {reviews ? <div className='flex items-center gap-1'>
           <span className=''>{averageRating}</span>
           <StarRating rating={averageRating}/>
-        </div>
+        </div> : <span className='text-dark-gray italic'>No reviews yet</span>}
       </header>
       <section className='w-full my-4'>
         <textarea className='w-full bg-light-gray p-3 rounded-[10px] focus:outline-none' placeholder='Write a review' 
