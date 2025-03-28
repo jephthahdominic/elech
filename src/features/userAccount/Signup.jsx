@@ -53,17 +53,17 @@ export default function Signup() {
         <h1 className="text-[#212121] text-[1.75rem] font-playfair font-semibold">Sign up to continue shopping</h1>
         <form className="mt-4 flex flex-col items-center gap-5">
           <div className="w-full flex flex-col gap-1">
-            <label htmlFor="fullname" className="text-[1.125rem] text-[#212121] font-playfair">Full name</label>
-            <input type="text" name="fullName" className={`p-2 rounded-[10px] border outline-none ${error.fullName.length > 0 && ' border-red-500'}`} pattern="^[A-Za-z\s!@#$%^&*(),.?&quot;&#39;:;_-]+$" onChange={(e)=>handleInput(e)} required/>
+            <label htmlFor="fullname" className="text-[1.3rem] text-[#212121] font-playfair">Full name</label>
+            <input type="text" name="fullName" className={`p-3 rounded-[10px] border outline-none ${error.fullName.length > 0 && ' border-red-500'}`} pattern="^[A-Za-z\s!@#$%^&*(),.?&quot;&#39;:;_-]+$" onChange={(e)=>handleInput(e)} required/>
           </div>
           <div className="w-full flex flex-col gap-1">
-            <label htmlFor="email" className="text-[1.125rem] font-playfair text-[#212121]">Email address</label>
-            <input type="text" name="email" className={`p-2 rounded-[10px] border outline-none ${error.email.length > 0 && 'border-red-500'}`} onChange={(e)=> handleInput(e)} required/>
+            <label htmlFor="email" className="text-[1.3rem] font-playfair text-[#212121]">Email address</label>
+            <input type="text" name="email" className={`p-3 rounded-[10px] border outline-none ${error.email.length > 0 && 'border-red-500'}`} onChange={(e)=> handleInput(e)} required/>
           </div>
           <div className="w-full flex flex-col gap-1">
-              <label htmlFor="password" className="text-[1.125rem] font-playfair text-[#212121] focus:border-none focus:outline-blue-400">Password</label>
+              <label htmlFor="password" className="text-[1.3rem] font-playfair text-[#212121] focus:border-none focus:outline-blue-400">Password</label>
               <div className='relative'>
-                <input type={!showPassword ? "password" : "text"} name="password" className={`w-full p-2 rounded-[10px] border outline-none ${error.password.length > 0 && 'border-red-500'}`} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" onChange={(e)=>handleInput(e)} required/>
+                <input type={!showPassword ? "password" : "text"} name="password" className={`w-full p-3 rounded-[10px] border outline-none ${error.password.length > 0 && 'border-red-500'}`} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" onChange={(e)=>handleInput(e)} required/>
                 <button className='absolute right-3 bottom-3' onClick={(e)=>{e.preventDefault(); setShowPassword(s=>!s)}}>
                   {!showPassword ? <BsEye className='text-[1.2rem]'/> : <BsEyeSlash className='text-[1.2rem]'/>}
                 </button>
