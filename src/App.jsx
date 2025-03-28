@@ -42,25 +42,26 @@ const router = createBrowserRouter([
         path: "/search",
         element: <SearchProducts />,
         errorElement: <Error />
-      }
+      },
+      {
+        path: "/cart",
+        element: <Cart />
+      },
+      {
+        path: "/login",
+        element: <Login />
+      },
+      {
+        path: "/signup",
+        element: <Signup />
+      },
+      {
+        path: "/verifyEmail",
+        element: <VerifyEmail />
+      },
     ]
   },
-  {
-    path: "/cart",
-    element: <Cart />
-  },
-  {
-    path: "/login",
-    element: <Login />
-  },
-  {
-    path: "/signup",
-    element: <Signup />
-  },
-  {
-    path: "/verifyEmail",
-    element: <VerifyEmail />
-  },
+  
 ])
 
 export default function App() {
