@@ -41,7 +41,7 @@ export default function Signup() {
     e.preventDefault()
     const user = await createUser(formData.email, formData.password);
     if(user){
-      const data = await verifyEmail(formData.email);
+      const data = await verifyEmail(user.email);
       console.log(data)
     }
   }
