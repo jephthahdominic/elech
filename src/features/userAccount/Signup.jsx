@@ -4,11 +4,14 @@ import Button from "../../ui/Button";
 import Header from "../../ui/Header";
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { createUser, verifyEmail } from '../../services/LoginAndSignup';
+import { ErrorMessage } from '../../ui/Error';
 
 export default function Signup() {
 
   const [formData, setFormData] = useState({fullName:"", email:"", password:""})
   const [error, setError] = useState({fullName:"", email:"", password:""})
+  const [authError, setAuthError] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate()
@@ -38,11 +41,17 @@ export default function Signup() {
   }
 
   async function handleSubmit(e){
-    e.preventDefault()
+    e.preventDefault();
+    setIsLoading(true)
     const user = await createUser(formData.email, formData.password);
     if(user){
-      await verifyEmail(user.email);
-      navigate('/verifyEmail');
+      verifyEmail(user.email, ()=>{
+        navigate('/verifyEmail');
+      });
+      setIsLoading(false)
+    }else{
+      setAuthError(true);
+      setIsLoading(false)
     }
   }
 
@@ -50,7 +59,8 @@ export default function Signup() {
   return (
     <div className="h-screen">
       <Header />
-      <div className="py-3 px-5 mt-10">
+      <div className="py-3 px-5 mt-10 relative">
+        {authError && <ErrorMessage errorMessage = {"An error occured"}/>}
         <h1 className="text-[#212121] text-[1.75rem] font-playfair font-semibold">Sign up to continue shopping</h1>
         <form className="mt-4 flex flex-col items-center gap-5">
           <div className="w-full flex flex-col gap-1">
@@ -70,7 +80,13 @@ export default function Signup() {
                 </button>
               </div>
           </div>
-          <Button className={'bg-primary w-full p-3 rounded-[10px] mt-6 text-[1.125rem] font-poppins text-white'} onClick={(e)=>handleSubmit(e)}>Sign up</Button>
+          <Button 
+            className={`bg-primary w-full p-3 rounded-[10px] mt-6 text-[1.125rem] font-poppins text-white ${isLoading && ' bg-opacity-[0.6]'}`}
+            disabled = {isLoading ? true : false}
+            onClick={(e)=>handleSubmit(e)}
+          >
+            {isLoading ? "Please wait..." : "Sign up"}
+          </Button>
           <p>Aleady have an account? <Link to='/signin' className="text-[#1E90FF]">Sign in</Link></p>
         </form>
       </div>

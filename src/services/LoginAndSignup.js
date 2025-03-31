@@ -10,16 +10,35 @@ const actionCodeSettings = {
     handleCodeInApp: true,
 };
 
-export async function createUser(email, password){
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-    const user = userCredential.user;
-    console.log(user);
-    localStorage.setItem("currentlyLoggedInUser", user)
-    return user
+export function getErrorMessages(errorCode){
+    return errorCode;
 }
 
-export async function verifyEmail(email){
-   await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+export async function createUser(email, password){
+    createUserWithEmailAndPassword(auth, email, password)
+    .then(userCredential => {
+        const user = userCredential.user;
+        return user
+    })
+    .catch(err => {
+        if(err.code === "auth/email-already-in-use"){
+            const message = getErrorMessages(err.code);
+            return message
+        }
+    })
+}
+
+export function verifyEmail(email, callback){
+   sendSignInLinkToEmail(auth, email, actionCodeSettings)
+   .then(() => {
+        window.localStorage.setItem("email for signunp", email);
+        return callback()
+   })
+   .catch((error)=>{
+        const code = error.code;
+        const message = error.message;
+        console.log(error)
+   })
 }
 
 
