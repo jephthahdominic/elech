@@ -50,6 +50,16 @@ export default {
           '0%': {background: 'rgba(217,217,217,0.3)'},
           '50%': {background: 'linear-gradient(to left, rgba(217,217,217,0.3), rgb(255,255,255))'},
           '100%': {backgroundColor: 'white'}
+        },
+        flapOpen:{
+          '0%':{transform: 'rotateX(0deg)'},
+          '50%':{transform: 'rotateX(-90deg)'},
+          '100%':{transform: 'rotateX(0deg)'}
+        },
+        slideOut:{
+          '0%': {transform: 'translateY(20px)'},
+          '50%':{opacity: 1},
+          '100%': {transform: 'translateY(-30deg)'} 
         }
       },
       animation: {
@@ -60,7 +70,9 @@ export default {
         appearLTR: 'appearLTR .4s linear',
         appearTTB: 'appearTTB .3s linear',
         expand: 'expand .2s linear',
-        search: 'search .1s ease-in-out'
+        search: 'search .1s ease-in-out',
+        flapOpen: 'flapOpen 2s ease-in-out forwards',
+        slideOut: 'slideOut 2s ease-in-out forwards'
       },
       fontFamily: {
         montserrat: ['Montserrat', 'sans'],

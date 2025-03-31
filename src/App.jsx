@@ -11,7 +11,7 @@ import { OrderProvider } from "./features/order/OrderContext"
 import SearchProducts from "./features/products/SearchProducts"
 import Login from "./features/userAccount/Login"
 import Signup from "./features/userAccount/Signup"
-import VerifyEmail from "./features/userAccount/VerifyEmail"
+import VerifyEmail, { VerificationSuccess } from "./features/userAccount/VerifyEmail"
 
 const router = createBrowserRouter([
   {
@@ -61,6 +61,11 @@ const router = createBrowserRouter([
     path: "/verifyEmail",
     element: <VerifyEmail />
   },
+  {
+    path: "/verifyEmail/success",
+    element: <VerificationSuccess />
+  },
+
 ])
 
 export default function App() {
