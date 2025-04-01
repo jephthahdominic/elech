@@ -1,6 +1,9 @@
+import { getAuth } from "firebase/auth";
 import Header from "../../ui/Header";
 
 export default function Cart() {
+  const auth = getAuth();
+  console.log(auth.currentUser)
   return(
     <div>
       <Header cart={false}/>
