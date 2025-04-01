@@ -1,9 +1,12 @@
 import { getAuth } from "firebase/auth";
 import Header from "../../ui/Header";
+import { useEffect } from "react";
 
 export default function Cart() {
   const auth = getAuth();
-  console.log(auth.currentUser)
+  useEffect(()=>{
+    console.log(auth.currentUser)
+  }, [auth])
   return(
     <div>
       <Header cart={false}/>
