@@ -23,7 +23,7 @@ export default function VerifyEmail() {
 export function VerificationSuccess(){
   const navigate = useNavigate()
   setTimeout(() => {
-    navigate('/cart')
+    navigate('/')
   }, 3000);
   return(
     <div className="h-screen">
