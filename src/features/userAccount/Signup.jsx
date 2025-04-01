@@ -3,14 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 import Header from "../../ui/Header";
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
-import { createUser, verifyEmail } from '../../services/LoginAndSignup';
+import { verifyEmail } from '../../services/LoginAndSignup';
 import { ErrorMessage } from '../../ui/Error';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 
 export default function Signup() {
+  const auth = getAuth()
 
   const [formData, setFormData] = useState({fullName:"", email:"", password:""})
   const [error, setError] = useState({fullName:"", email:"", password:""})
-  const [authError, setAuthError] = useState(false)
+  const [authError, setAuthError] = useState(false);
+  const [authErrorMessage, setAuthErrorMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false);
 
@@ -42,15 +45,23 @@ export default function Signup() {
 
   async function handleSubmit(e){
     e.preventDefault();
-    setIsLoading(true)
-    const user = await createUser(formData.email, formData.password);
-    if(user){
-      verifyEmail(user.email, ()=>{
-        navigate('/verifyEmail');
-      });
-      setIsLoading(false)
-    }else{
+    if(formData.fullName.length === 0 || formData.email.length === 0 || formData.password.length === 0){
       setAuthError(true);
+      setAuthErrorMessage("All fields must be filled")
+      return
+    } 
+    setIsLoading((s)=>!s)
+    try{
+      const createUser = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      const user = createUser.user;
+      if(user){
+        verifyEmail(user.email, ()=>{
+          navigate('/verifyEmail')
+        })
+      }
+    }catch(err){
+      setAuthError(true);
+      setAuthErrorMessage(err.code)
       setIsLoading(false)
     }
   }
@@ -59,10 +70,10 @@ export default function Signup() {
   return (
     <div className="h-screen">
       <Header />
-      <div className="py-3 px-5 mt-10 relative">
-        {authError && <ErrorMessage errorMessage = {"An error occured"}/>}
+      <div className="w-full py-20 px-5 relative">
+        {authError && <ErrorMessage errorMessage = {authErrorMessage} setAuthError = {setAuthError} setAuthErrorMessage={setAuthErrorMessage}/>}
         <h1 className="text-[#212121] text-[1.75rem] font-playfair font-semibold">Sign up to continue shopping</h1>
-        <form className="mt-4 flex flex-col items-center gap-5">
+        <form className="mt-4 flex flex-col items-center gap-5" onSubmit={((e)=>handleSubmit(e))}>
           <div className="w-full flex flex-col gap-1">
             <label htmlFor="fullname" className="text-[1.3rem] text-[#212121] font-playfair">Full name</label>
             <input type="text" name="fullName" className={`p-3 rounded-[10px] border outline-none ${error.fullName.length > 0 && ' border-red-500'}`} pattern="^[A-Za-z\s!@#$%^&*(),.?&quot;&#39;:;_-]+$" onChange={(e)=>handleInput(e)} required/>
@@ -82,12 +93,12 @@ export default function Signup() {
           </div>
           <Button 
             className={`bg-primary w-full p-3 rounded-[10px] mt-6 text-[1.125rem] font-poppins text-white ${isLoading && ' bg-opacity-[0.6]'}`}
-            disabled = {isLoading ? true : false}
+            disabled = {isLoading}
             onClick={(e)=>handleSubmit(e)}
           >
             {isLoading ? "Please wait..." : "Sign up"}
           </Button>
-          <p>Aleady have an account? <Link to='/signin' className="text-[#1E90FF]">Sign in</Link></p>
+          <p>Aleady have an account? <Link to='/login' className="text-[#1E90FF]">Sign in</Link></p>
         </form>
       </div>
     </div>

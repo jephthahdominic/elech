@@ -19,8 +19,8 @@ export default {
     extend: {
       keyframes:{
         fade: {
-          '0%': {backgroundColor: 'rgba(0,0,0,0)'},
-          '100%': {backgroundColor: 'rgba(0,0,0,0.37)'}
+          '0%': {opacity: 0},
+          '100%': {opacity: 1}
         },
         displace: {
           '0%':{transform: 'translate(100%)'},

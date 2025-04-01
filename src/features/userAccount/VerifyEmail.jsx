@@ -1,5 +1,6 @@
 import { GrStatusGood } from "react-icons/gr";
 import Header from "../../ui/Header";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function VerifyEmail() {
   return (
@@ -20,14 +21,17 @@ export default function VerifyEmail() {
 }
 
 export function VerificationSuccess(){
+  const navigate = useNavigate()
+  setTimeout(() => {
+    navigate('/cart')
+  }, 3000);
   return(
     <div className="h-screen">
       <Header />
       <div className="text-center py-20 px-3 flex flex-col items-center">
         <GrStatusGood className="text-green-500 text-[100px]"/>
         <p className="text-[1.3rem] mt-3">You have successfully verified your Email</p>
-        <p className="text-[1rem] text-[#212121] mt-3">Continue Shopping</p>
-
+        <Link className="text-[1.125rem] text-blue-700 mt-3" to={'/cart'}>Confirm</Link>
       </div>
     </div>
   )

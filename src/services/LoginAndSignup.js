@@ -10,10 +10,6 @@ const actionCodeSettings = {
     handleCodeInApp: true,
 };
 
-export function getErrorMessages(errorCode){
-    return errorCode;
-}
-
 export async function createUser(email, password){
     createUserWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
@@ -22,8 +18,7 @@ export async function createUser(email, password){
     })
     .catch(err => {
         if(err.code === "auth/email-already-in-use"){
-            const message = getErrorMessages(err.code);
-            return message
+            console.log(err.code)
         }
     })
 }
