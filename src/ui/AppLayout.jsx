@@ -5,10 +5,10 @@ export default function AppLayout() {
   
   return (
     <div>
-        <Header toggles={true} cart={true}/>
-        <main className="px-3 py-5">
-          <Outlet />
-        </main>
+      <Header toggles={true} cart={true}/>
+      <main className="px-3 py-5">
+        <Outlet />
+      </main>
     </div>
   )
 }

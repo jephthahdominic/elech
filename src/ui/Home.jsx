@@ -14,7 +14,7 @@ export default function Home() {
       getProducts();
     }
     fetchProducts()
-  }, [])
+  }, [getProducts])
 
   if(isLoading) return <Loader/>
   

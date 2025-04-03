@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useState } from "react";
 import { database } from "../../services/firebaseConfig";
-import { ref, onValue, query, orderByChild, equalTo, startAt, endAt } from "firebase/database";
+import { ref, onValue} from "firebase/database";
 
 const ProductContext = createContext();
 
@@ -8,7 +8,7 @@ export function ProductsProvider({children}){
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
 
-    function getProducts(){
+    const getProducts = useCallback(function getProducts(){
         const dbRef = ref(database, 'products');
         onValue(dbRef, (snapshot)=>{
             const data = snapshot.val();
@@ -23,7 +23,7 @@ export function ProductsProvider({children}){
                 throw new Error("Failed to fetch data")
             }
         })
-    }
+    }, []);
     
     const getProductById = useCallback((id, callback)=>{
         const productRef = ref(database, `products/${id}`);

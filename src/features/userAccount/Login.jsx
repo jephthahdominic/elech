@@ -51,6 +51,7 @@ export default function Login() {
         if(user){
           setAuthError(false);
           setIsLoading(false);
+          window.localStorage("loggedInUser", user);
           navigate('/');
         }
 
