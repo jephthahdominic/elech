@@ -12,8 +12,7 @@ export default function ProtectedRoutes({children}) {
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
             if(!currentUser){
-                // navigate('/login')
-                return <Navigate replace to='/login'/>
+                navigate('/login', {replace: true})
             }
             setUser(currentUser)
         })
