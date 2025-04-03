@@ -12,12 +12,15 @@ import SearchProducts from "./features/products/SearchProducts"
 import Login from "./features/userAccount/Login"
 import Signup from "./features/userAccount/Signup"
 import VerifyEmail, { VerificationSuccess } from "./features/userAccount/VerifyEmail"
+import ProtectedRoutes from "./features/userAccount/ProtectedRoutes"
 
 const router = createBrowserRouter([
   {
-    element: <ProductsProvider>
-          <AppLayout />
-    </ProductsProvider>,
+    element: (
+      <ProductsProvider>
+        <AppLayout />
+      </ProductsProvider>
+    ),
     errorElement: <Error />,
     children: [
       {
@@ -36,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/order",
-        element: <CreateOrder />
+        element: <ProtectedRoutes><CreateOrder /></ProtectedRoutes>
       },
       {
         path: "/search",
@@ -47,7 +50,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/cart",
-    element: <Cart />
+    element: <ProtectedRoutes><Cart /></ProtectedRoutes>
   },
   {
     path: "/login",
@@ -59,17 +62,17 @@ const router = createBrowserRouter([
   },
   {
     path: "/verifyEmail",
-    element: <VerifyEmail />
+    element: <ProtectedRoutes><VerifyEmail /></ProtectedRoutes>
   },
   {
     path: "/verifyEmail/success",
-    element: <VerificationSuccess />
+    element: <ProtectedRoutes><VerificationSuccess /></ProtectedRoutes>
   },
 
 ])
 
 export default function App() {
   return (
-      <RouterProvider router={router}/>
+    <RouterProvider router={router}/>
   )
 }

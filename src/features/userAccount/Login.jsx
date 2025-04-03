@@ -1,16 +1,16 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../../ui/Header";
 import { ErrorMessage } from "../../ui/Error";
 import Button from "../../ui/Button";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
-import { verifyEmail } from "../../services/LoginAndSignup";
+import { validateEmail, validateFullName, validatePassword } from "../../utils/helpers";
 
 
 export default function Login() {
 
-    const auth = getAuth()
+    const auth = getAuth();
   
     const [formData, setFormData] = useState({email:"", password:""})
     const [error, setError] = useState({email:"", password:""})
@@ -20,20 +20,7 @@ export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
   
     const navigate = useNavigate()
-  
-    function validateFullName(value){
-      return /^[A-Za-z\s!@#$%^&*(),.?':;_-]+$/.test(value) ? "":"Your fullName can only be letters"
-    }
-  
-    function validateEmail(value){
-      return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value) ? "" : "invalid email format"
-  
-    }
-  
-    function validatePassword(value){
-      return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/.test(value) ? "" : "Your password must be 8 characters long, it must contain letters, at least a number and a symbol"
-    }
-  
+    
     function handleInput(e){
       const {name, value} = e.target;
   
@@ -63,10 +50,8 @@ export default function Login() {
 
         if(user){
           setAuthError(false);
-          setIsLoading(false)
-          verifyEmail(user.email, ()=>{
-            navigate('/verifyEmail')
-          });
+          setIsLoading(false);
+          navigate('/');
         }
 
       }catch(err){
@@ -102,9 +87,9 @@ export default function Login() {
           disabled = {isLoading}
           onClick={(e)=>handleSubmit(e)}
         >
-          {isLoading ? "Please wait..." : "Sign up"}
+          {isLoading ? "Please wait..." : "Sign in"}
         </Button>
-        <p>Don&apos;t have an account yet? <Link to='/signin' className="text-[#1E90FF]">Sign in</Link></p>
+        <p>Don&apos;t have an account yet? <Link to='/signup' className="text-[#1E90FF]">Sign in</Link></p>
 
         </form>
       </div>
