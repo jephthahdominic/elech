@@ -66,7 +66,7 @@ export default function Login() {
       <Header />
       <div className="w-full py-20 px-5 relative">
         {authError && <ErrorMessage errorMessage = {authErrorMessage} setAuthError = {setAuthError} setAuthErrorMessage={setAuthErrorMessage}/>}
-        <h1 className="text-[#212121] text-[1.75rem] font-playfair font-semibold">Sign up to continue shopping</h1>
+        <h1 className="text-[#212121] text-[1.75rem] font-playfair font-semibold">Sign in to continue shopping</h1>
         <form className="mt-4 flex flex-col items-center gap-5" onSubmit={((e)=>handleSubmit(e))}>
 
         <div className="w-full flex flex-col gap-1">
