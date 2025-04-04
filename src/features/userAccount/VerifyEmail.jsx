@@ -1,5 +1,4 @@
 import { GrStatusGood } from "react-icons/gr";
-import Header from "../../ui/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged, sendEmailVerification } from "firebase/auth";
@@ -34,7 +33,6 @@ export default function VerifyEmail() {
 
   return (
     <div>
-      <Header />
       <div className="text-center py-20 px-3">
         <div className="w-max relative flex items-center justify-center m-auto">
           <div className="w-[120px] h-[80px] bg-light-gray border border-dark-gray"></div>
@@ -54,7 +52,6 @@ export function VerificationSuccess(){
   }, 3000);
   return(
     <div className="h-screen">
-      <Header />
       <div className="text-center py-20 px-3 flex flex-col items-center">
         <GrStatusGood className="text-green-500 text-[100px]"/>
         <p className="text-[1.3rem] mt-3">You have successfully verified your Email</p>

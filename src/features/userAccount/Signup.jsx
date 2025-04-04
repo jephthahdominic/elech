@@ -1,7 +1,6 @@
 import {useState} from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
-import Header from "../../ui/Header";
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { ErrorMessage } from '../../ui/Error';
 import { createUserWithEmailAndPassword, getAuth} from 'firebase/auth';
@@ -69,11 +68,10 @@ export default function Signup() {
 
   return (
     <div className="h-screen">
-      <Header />
       <div className="w-full py-20 px-5 relative">
         {authError && <ErrorMessage errorMessage = {authErrorMessage} setAuthError = {setAuthError} setAuthErrorMessage={setAuthErrorMessage}/>}
         <h1 className="text-[#212121] text-[1.75rem] font-playfair font-semibold">Sign up to continue shopping</h1>
-        <form className="mt-4 flex flex-col items-center gap-5" onSubmit={((e)=>handleSubmit(e))}>
+        <form className="mt-8 flex flex-col items-center gap-5" onSubmit={((e)=>handleSubmit(e))}>
           <div className="w-full flex flex-col gap-1">
             <label htmlFor="fullname" className="text-[1.3rem] text-[#212121] font-playfair">Full name</label>
             <input type="text" name="fullName" className={`p-3 rounded-[10px] border outline-none ${error.fullName.length > 0 && ' border-red-500'}`} pattern="^[A-Za-z\s!@#$%^&*(),.?&quot;&#39;:;_-]+$" onChange={(e)=>handleInput(e)} required/>

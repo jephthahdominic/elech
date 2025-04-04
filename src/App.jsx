@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import AppLayout from "./ui/AppLayout"
+import { AuthAppLayout, MarkettingAppLayout, OrderLayout } from "./ui/AppLayout"
 import Home from "./ui/Home"
 import ProductDetails from "./features/products/ProductDetails"
 import Cart from "./features/cart/Cart"
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
   {
     element: (
       <ProductsProvider>
-        <AppLayout />
+        <MarkettingAppLayout />
       </ProductsProvider>
     ),
     errorElement: <Error />,
@@ -45,29 +45,47 @@ const router = createBrowserRouter([
         path: "/search",
         element: <SearchProducts />,
         errorElement: <Error />
-      }
+      },
     ]
   },
+
+  //auth group
+  
   {
-    path: "/cart",
-    element: <ProtectedRoutes><Cart /></ProtectedRoutes>
+    element: <AuthAppLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />
+      },
+      {
+        path: "/signup",
+        element: <Signup />
+      },
+      {
+        path: "/verifyEmail",
+        element: <ProtectedRoutes><VerifyEmail /></ProtectedRoutes>
+      },
+      {
+        path: "/verifyEmail/success",
+        element: <ProtectedRoutes><VerificationSuccess /></ProtectedRoutes>
+      },
+    ]
   },
+
+  //order group
+
   {
-    path: "/login",
-    element: <Login />
-  },
-  {
-    path: "/signup",
-    element: <Signup />
-  },
-  {
-    path: "/verifyEmail",
-    element: <ProtectedRoutes><VerifyEmail /></ProtectedRoutes>
-  },
-  {
-    path: "/verifyEmail/success",
-    element: <ProtectedRoutes><VerificationSuccess /></ProtectedRoutes>
-  },
+    element: <OrderLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/cart",
+        element: <ProtectedRoutes><Cart /></ProtectedRoutes>
+      }
+    ]
+  }
 
 ])
 

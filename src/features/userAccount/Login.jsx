@@ -1,7 +1,6 @@
 import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Header from "../../ui/Header";
 import { ErrorMessage } from "../../ui/Error";
 import Button from "../../ui/Button";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
@@ -64,11 +63,10 @@ export default function Login() {
 
   return (
     <div className="h-screen">
-      <Header />
       <div className="w-full py-20 px-5 relative">
         {authError && <ErrorMessage errorMessage = {authErrorMessage} setAuthError = {setAuthError} setAuthErrorMessage={setAuthErrorMessage}/>}
         <h1 className="text-[#212121] text-[1.75rem] font-playfair font-semibold">Sign in to continue shopping</h1>
-        <form className="mt-4 flex flex-col items-center gap-5" onSubmit={((e)=>handleSubmit(e))}>
+        <form className="mt-8 flex flex-col items-center gap-5" onSubmit={((e)=>handleSubmit(e))}>
 
         <div className="w-full flex flex-col gap-1">
           <label htmlFor="email" className="text-[1.3rem] font-playfair text-[#212121]">Email address</label>
