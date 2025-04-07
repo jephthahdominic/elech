@@ -3,9 +3,14 @@ import Logo from './Logo'
 import { Link } from 'react-router-dom'
 import { useSidebar } from '../contexts/SidebarContext';
 
-export default function Header({toggles, cart, search, noSearchBar}) {
+export default function Header({cart, search, noSearchBar}) {
   
   const {isSidebarOpen, setIsSidebarOpen} = useSidebar();
+
+  function handleSidebar(){
+    console.log(isSidebarOpen); 
+    setIsSidebarOpen((s)=>!s)
+  }
 
   return (
     <header className='w-full py-3 px-4 shadow-md flex items-center justify-between'>
@@ -14,13 +19,19 @@ export default function Header({toggles, cart, search, noSearchBar}) {
           {search && <input placeholder='Search for anything here'  className='w-1/3 px-4 py-2 rounded-full max-xl:hidden
            border-dark-gray focus:outline-none' />}
         </div>
-        {toggles && <div className='flex gap-8 text-[24px]'>
+        <div className='flex gap-8 text-[24px]'>
           {noSearchBar && <button><FiSearch /></button>}
           {cart && <Link to='/cart' className='relative'>
             <FiShoppingCart />
           </Link>}
-          <button onClick={()=>{console.log(isSidebarOpen);setIsSidebarOpen((s)=>!s)}}><FiMenu/></button>
-        </div>}
+          <button onClick={()=>handleSidebar()}><FiMenu/></button>
+        </div>
     </header>
   )
+}
+
+export function AuthHeader(){
+  return <header className='w-full py-3 px-4 shadow-md flex items-center justify-between'>
+    <Logo />
+  </header>
 }

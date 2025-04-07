@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Header from "./Header";
+import Header, { AuthHeader } from "./Header";
 import SideBar from "./Sidebar";
 
 export function MarkettingAppLayout() {
@@ -18,7 +18,7 @@ export function MarkettingAppLayout() {
 export function AuthAppLayout() {
   return(
     <div>
-      <Header />
+      <AuthHeader/>
       <main>
         <Outlet />
       </main>

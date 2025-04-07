@@ -3,10 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { ErrorMessage } from '../../ui/Error';
-import { createUserWithEmailAndPassword, getAuth, updateProfile} from 'firebase/auth';
+// import { createUserWithEmailAndPassword, getAuth, updateProfile} from 'firebase/auth';
+import { SignupController } from '../../services/Authentication';
 
 export default function Signup() {
-  const auth = getAuth()
 
   const [formData, setFormData] = useState({fullName:"", email:"", password:""})
   const [error, setError] = useState({fullName:"", email:"", password:""})
@@ -41,31 +41,20 @@ export default function Signup() {
 
   async function handleSubmit(e){
     e.preventDefault();
+    setIsLoading((s)=>!s)
 
     if(formData.fullName.length === 0 || formData.email.length === 0 || formData.password.length === 0){
       setAuthError(true);
       setAuthErrorMessage("All fields must be filled")
       return
     } 
-
-    setIsLoading((s)=>!s)
-
-    try{
-      const createUser = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
-      const user = createUser.user;
-
-      await updateProfile(user, {
-        displayName: formData.fullName
-      })
-
-      if(user){
-        navigate("/verifyEmail");
-      }
-
-    }catch(err){
+    
+    try {
+      await SignupController(formData.fullName, formData.email, formData.password);
+      navigate('/verifyEmail')
+    } catch (error) {
       setAuthError(true);
-      setAuthErrorMessage(err.code);
-      setIsLoading(false);
+      setAuthErrorMessage(error)
     }
   }
 
