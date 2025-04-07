@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useProducts } from "./ProductContext"
-import { Link, useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate} from "react-router-dom";
 import SearchBar from "../../ui/SearchBar";
 import { BiChevronLeft } from "react-icons/bi";
 import Loader from "../../ui/Loader";

@@ -45,19 +45,18 @@ export default function Login() {
       try{
         const loginUser = await signInWithEmailAndPassword(auth, formData.email, formData.password);
         const user = loginUser.user;
-        console.log(user);
 
         if(user){
+          navigate('/');
           setAuthError(false);
           setIsLoading(false);
           window.localStorage("loggedInUser", user);
-          navigate('/');
         }
 
       }catch(err){
         setAuthError(true);
-        setAuthErrorMessage(err.code);
         setIsLoading(false);
+        console.log(err)
       }
     }
 
@@ -70,12 +69,12 @@ export default function Login() {
 
         <div className="w-full flex flex-col gap-1">
           <label htmlFor="email" className="text-[1.3rem] font-playfair text-[#212121]">Email address</label>
-          <input type="text" name="email" className={`p-3 rounded-[10px] border outline-none ${error.email.length > 0 && 'border-red-500'}`} onChange={(e)=> handleInput(e)} required/>
+          <input type="text" name="email" id="email" className={`p-3 rounded-[10px] border outline-none ${error.email.length > 0 && 'border-red-500'}`} onChange={(e)=> handleInput(e)} required/>
         </div>
         <div className="w-full flex flex-col gap-1">
           <label htmlFor="password" className="text-[1.3rem] font-playfair text-[#212121] focus:border-none focus:outline-blue-400">Password</label>
           <div className='relative'>
-            <input type={!showPassword ? "password" : "text"} name="password" className={`w-full p-3 rounded-[10px] border outline-none ${error.password.length > 0 && 'border-red-500'}`} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" onChange={(e)=>handleInput(e)} required/>
+            <input type={!showPassword ? "password" : "text"} name="password" id="password" className={`w-full p-3 rounded-[10px] border outline-none ${error.password.length > 0 && 'border-red-500'}`} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" onChange={(e)=>handleInput(e)} required/>
             <button className='absolute right-3 bottom-3' onClick={(e)=>{e.preventDefault(); setShowPassword(s=>!s)}}>
               {!showPassword ? <BsEye className='text-[1.2rem]'/> : <BsEyeSlash className='text-[1.2rem]'/>}
             </button>
@@ -88,7 +87,7 @@ export default function Login() {
         >
           {isLoading ? "Please wait..." : "Sign in"}
         </Button>
-        <p>Don&apos;t have an account yet? <Link to='/signup' className="text-[#1E90FF]">Sign in</Link></p>
+        <p>Don&apos;t have an account yet? <Link to='/signup' className="text-[#1E90FF]">Sign up</Link></p>
 
         </form>
       </div>

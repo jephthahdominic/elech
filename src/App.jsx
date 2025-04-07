@@ -13,13 +13,19 @@ import Login from "./features/userAccount/Login"
 import Signup from "./features/userAccount/Signup"
 import VerifyEmail, { VerificationSuccess } from "./features/userAccount/VerifyEmail"
 import ProtectedRoutes from "./features/userAccount/ProtectedRoutes"
+import { SideBarProvider } from "./contexts/SidebarContext"
+import { UserProvider } from "./contexts/UserContext"
 
 const router = createBrowserRouter([
   {
     element: (
-      <ProductsProvider>
-        <MarkettingAppLayout />
-      </ProductsProvider>
+      <UserProvider>
+        <SideBarProvider>
+          <ProductsProvider>
+            <MarkettingAppLayout />
+          </ProductsProvider>
+        </SideBarProvider>
+      </UserProvider>
     ),
     errorElement: <Error />,
     children: [
@@ -52,7 +58,9 @@ const router = createBrowserRouter([
   //auth group
   
   {
-    element: <AuthAppLayout />,
+    element: ( 
+      <AuthAppLayout />
+    ),
     errorElement: <Error />,
     children: [
       {
@@ -77,7 +85,13 @@ const router = createBrowserRouter([
   //order group
 
   {
-    element: <OrderLayout />,
+    element:(
+      <UserProvider>
+        <SideBarProvider>
+          <OrderLayout />
+        </SideBarProvider>
+      </UserProvider>
+    ),
     errorElement: <Error />,
     children: [
       {

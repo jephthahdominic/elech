@@ -1,8 +1,12 @@
 import { FiMenu, FiSearch, FiShoppingCart } from 'react-icons/fi'
 import Logo from './Logo'
 import { Link } from 'react-router-dom'
+import { useSidebar } from '../contexts/SidebarContext';
 
 export default function Header({toggles, cart, search, noSearchBar}) {
+  
+  const {isSidebarOpen, setIsSidebarOpen} = useSidebar();
+
   return (
     <header className='w-full py-3 px-4 shadow-md flex items-center justify-between'>
         <div className='flex-1 flex items-center gap-10'>
@@ -15,7 +19,7 @@ export default function Header({toggles, cart, search, noSearchBar}) {
           {cart && <Link to='/cart' className='relative'>
             <FiShoppingCart />
           </Link>}
-          <button><FiMenu /></button>
+          <button onClick={()=>{console.log(isSidebarOpen);setIsSidebarOpen((s)=>!s)}}><FiMenu/></button>
         </div>}
     </header>
   )
