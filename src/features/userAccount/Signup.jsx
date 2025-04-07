@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { ErrorMessage } from '../../ui/Error';
-import { createUserWithEmailAndPassword, getAuth} from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, updateProfile} from 'firebase/auth';
 
 export default function Signup() {
   const auth = getAuth()
@@ -53,6 +53,10 @@ export default function Signup() {
     try{
       const createUser = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
       const user = createUser.user;
+
+      await updateProfile(user, {
+        displayName: formData.fullName
+      })
 
       if(user){
         navigate("/verifyEmail");
