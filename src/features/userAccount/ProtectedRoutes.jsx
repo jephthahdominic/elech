@@ -15,18 +15,15 @@ export default function ProtectedRoutes({children}) {
             console.log(currentUser)
             if(!currentUser){
                 navigate('/login', {replace: true})
+            }else if(!currentUser.emailVerified){
+                navigate('/verifyEmail', {replace:true})
+            }else{
+                setUser(currentUser)
             }
-            setUser(currentUser)
         })
 
         return () => unsubscribe()
     }, [navigate])
 
-    if(user){
-        return (
-            <>
-                {children}
-            </>
-        )
-    }
+    if(user) return <>{children}</>
 }
