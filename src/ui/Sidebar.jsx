@@ -5,7 +5,6 @@ import { useSidebar } from '../contexts/SidebarContext'
 import { useUser } from '../contexts/UserContext';
 import { BiLogOut } from 'react-icons/bi';
 import { AiOutlineCustomerService } from 'react-icons/ai';
-import { logoutController } from '../services/Authentication';
 
 export default function SideBar() {
     const {isSidebarOpen, setIsSidebarOpen} = useSidebar();

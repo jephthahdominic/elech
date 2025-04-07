@@ -1,4 +1,4 @@
-import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import { getAuth} from "firebase/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorMessage } from "../../ui/Error";
@@ -9,8 +9,6 @@ import { loginController } from "../../services/Authentication";
 
 
 export default function Login() {
-
-    const auth = getAuth();
   
     const [formData, setFormData] = useState({email:"", password:""})
     const [error, setError] = useState({email:"", password:""})
