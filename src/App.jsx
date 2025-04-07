@@ -15,6 +15,7 @@ import VerifyEmail, { VerificationSuccess } from "./features/userAccount/VerifyE
 import ProtectedRoutes from "./features/userAccount/ProtectedRoutes"
 import { SideBarProvider } from "./contexts/SidebarContext"
 import { UserProvider } from "./contexts/UserContext"
+import Logout from "./features/userAccount/Logout"
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
         path: "/verifyEmail/success",
         element: <ProtectedRoutes><VerificationSuccess /></ProtectedRoutes>
       },
+      {
+        path: "/logout",
+        element: <Logout />,
+      }
     ]
   },
 

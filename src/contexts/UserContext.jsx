@@ -2,10 +2,10 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const UserContext = createContext();
-const auth = getAuth();
 
 function UserProvider({children}){
-    const [user, setUser] = useState(null)
+    const auth = getAuth();
+    const [user, setUser] = useState(null);
     
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
@@ -14,7 +14,7 @@ function UserProvider({children}){
             }
         })
         return () => unsubscribe()
-    }, [])
+    }, [auth])
 
     return(
         <UserContext.Provider value={{user}}>
@@ -28,7 +28,7 @@ function useUser(){
     if (!context){
         console.log("you cannot use context outside its provider");
     }
-    return {context};
+    return context;
 }
 
 export {UserProvider, useUser}

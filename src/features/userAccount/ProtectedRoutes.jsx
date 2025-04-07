@@ -15,9 +15,8 @@ export default function ProtectedRoutes({children}) {
             console.log(currentUser)
             if(!currentUser){
                 navigate('/login', {replace: true})
-            }else if(!currentUser.emailVerified){
-                navigate('/verifyEmail', {replace:true})
-            }else{
+            }
+            else{
                 setUser(currentUser)
             }
         })

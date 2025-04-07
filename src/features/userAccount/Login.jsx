@@ -5,6 +5,7 @@ import { ErrorMessage } from "../../ui/Error";
 import Button from "../../ui/Button";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { validateEmail, validateFullName, validatePassword } from "../../utils/helpers";
+import { loginController } from "../../services/Authentication";
 
 
 export default function Login() {
@@ -33,6 +34,7 @@ export default function Login() {
 
     async function handleSubmit(e){
       e.preventDefault();
+      console.log(formData.email)
       setIsLoading(true);
       
       if(formData.email.length === 0 || formData.password.length === 0) {
@@ -43,19 +45,14 @@ export default function Login() {
       }
 
       try{
-        const loginUser = await signInWithEmailAndPassword(auth, formData.email, formData.password);
-        const user = loginUser.user;
-
-        if(user){
-          navigate('/');
-          setAuthError(false);
-          setIsLoading(false);
-          window.localStorage("loggedInUser", user);
-        }
-
+        await loginController(formData.email, formData.password);
+        navigate('/');
+        setAuthError(false);
+        setIsLoading(false);
       }catch(err){
         setAuthError(true);
         setIsLoading(false);
+        setAuthErrorMessage(err.code || err.message)
         console.log(err)
       }
     }

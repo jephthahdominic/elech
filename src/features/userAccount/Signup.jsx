@@ -54,7 +54,7 @@ export default function Signup() {
       navigate('/verifyEmail')
     } catch (error) {
       setAuthError(true);
-      setAuthErrorMessage(error)
+      setAuthErrorMessage(error.code || error.message)
     }
   }
 
