@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useState } from "react";
-import { database } from "../../services/firebaseConfig";
+import { database } from "../services/firebaseConfig";
 import { ref, onValue} from "firebase/database";
 
 const ProductContext = createContext();

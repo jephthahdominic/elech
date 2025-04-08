@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { useProducts } from "./ProductContext";
+import { useProducts } from "../../contexts/ProductContext";
 import { useCallback, useEffect, useState} from "react";
 import { formatCurrency } from "../../utils/helpers";
 import Reviews from "./Reviews";

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import BigProductCard from "../features/products/BigProductCard";
 import Banner from "./Banner";
 import SearchBar from "./SearchBar";
-import { useProducts } from "../features/products/ProductContext";
+import { useProducts } from "../contexts/ProductContext";
 import { useEffect } from "react";
 import Loader from "./Loader";
 
@@ -19,7 +19,7 @@ export default function Home() {
   if(isLoading) return <Loader/>
   
   return (
-    <div>
+    <div className="flex-1 xl:pr-3">
       <SearchBar />
       <Banner />
 

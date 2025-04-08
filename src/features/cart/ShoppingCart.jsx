@@ -1,9 +1,10 @@
 import { useState } from "react";
 import CartItem from "./CartItem";
 
-export default function Cart() {
+export default function ShoppingCart() {
+
   const [items, setItems] = useState([])
-  
+
   if(items.length === 0){
     return (
       <div className='mt-4 text-center p-8'>
@@ -11,7 +12,7 @@ export default function Cart() {
       </div>
     )
   }
-  
+
   return (
     <section className="px-4 py-6">
       <header className="flex justify-between items-center py-4">
@@ -21,5 +22,5 @@ export default function Cart() {
         <CartItem />
       </main>
     </section>
-    )
+  )
 }
