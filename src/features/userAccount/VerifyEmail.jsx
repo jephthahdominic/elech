@@ -19,13 +19,11 @@ export default function VerifyEmail() {
   useEffect(()=>{
 
     const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
-      if(currentUser) {
-        if(!currentUser.emailVerified) {
-          setCurrentUserEmail(currentUser.email);
-          sendEmailVerification(currentUser, actionCodeSettings);
-        }
+      if(!currentUser.emailVerified) {
+        setCurrentUserEmail(currentUser.email);
+        sendEmailVerification(currentUser, actionCodeSettings);
       }
-      navigate('/login');
+      navigate('/');
     });
 
     return ()=> unsubscribe()
