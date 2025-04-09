@@ -28,7 +28,7 @@ export default function SelectSize({selectedSize, setSelectedSize, isError, setI
     }
     
   return (
-    <section className={`py-5 mt-4 ${isError && 'border-2 border-red-600 px-1'}`} id='selectSize'>
+    <section className={`py-5 mt-4 ${isError && 'border-2 border-red-600 px-3 rounded-[10px]'}`} id='selectSize'>
         <div className='flex justify-between items-start relative'>
             <span className='text-[1.5rem] font-serif text-[#212121]'>Select Size</span>
             <div className='border absolute right-0 bg-white'>
