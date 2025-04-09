@@ -27,6 +27,7 @@ export function ProductsProvider({children}){
     
     const getProductById = useCallback((id, callback)=>{
         const productRef = ref(database, `products/${id}`);
+        setIsLoading(true)
         onValue(productRef, (snapshot)=>{
             const data  = snapshot.val();
             if(data){
@@ -34,6 +35,7 @@ export function ProductsProvider({children}){
                     id,
                     ...data
                 })
+                setIsLoading(false)
             }else{
                 throw new Error("Product not found")
             }

@@ -63,10 +63,10 @@ export default {
         }
       },
       animation: {
-        fade:'fade .2s ease-in-out',
+        fade:'fade .1s ease-in-out',
         displace:'displace .5s ease-in-out',
         return:'return .5s ease-in-out',
-        appearRTL: 'appearRTL .2s linear',
+        appearRTL: 'appearRTL .1s linear',
         appearLTR: 'appearLTR .4s linear',
         appearTTB: 'appearTTB .3s linear',
         expand: 'expand .2s linear',

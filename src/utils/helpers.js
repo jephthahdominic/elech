@@ -2,6 +2,8 @@ export function formatCurrency(value){
     return new Intl.NumberFormat("en", {
         style:"currency",
         currency:"NGN",
+        currencyDisplay:"narrowSymbol",
+        maximumFractionDigits:0,
     }).format(value)
 }
 

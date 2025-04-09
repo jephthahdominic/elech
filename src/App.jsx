@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { AuthAppLayout, MarkettingAppLayout, OrderLayout } from "./ui/AppLayout"
 import Home from "./ui/Home"
-import ProductDetails from "./features/products/ProductDetails"
 import Cart from "./features/cart/Cart"
 import Error from "./ui/Error"
 import CreateOrder from "./features/order/CreateOrder"
@@ -14,19 +13,17 @@ import Signup from "./features/userAccount/Signup"
 import VerifyEmail, { VerificationSuccess } from "./features/userAccount/VerifyEmail"
 import ProtectedRoutes from "./features/userAccount/ProtectedRoutes"
 import { SideBarProvider } from "./contexts/SidebarContext"
-import { UserProvider } from "./contexts/UserContext"
 import Logout from "./features/userAccount/Logout"
+import Product from "./features/products/Product"
 
 const router = createBrowserRouter([
   {
     element: (
-      <UserProvider>
-        <SideBarProvider>
-          <ProductsProvider>
-            <MarkettingAppLayout />
-          </ProductsProvider>
-        </SideBarProvider>
-      </UserProvider>
+      <SideBarProvider>
+        <ProductsProvider>
+          <MarkettingAppLayout />
+        </ProductsProvider>
+      </SideBarProvider>
     ),
     errorElement: <Error />,
     children: [
@@ -42,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/products/:productId",
-        element: <OrderProvider><ProductDetails /></OrderProvider>
+        element: <OrderProvider><Product /></OrderProvider>
       },
       {
         path: "/order",
@@ -91,11 +88,9 @@ const router = createBrowserRouter([
 
   {
     element:(
-      <UserProvider>
-        <SideBarProvider>
-          <OrderLayout />
-        </SideBarProvider>
-      </UserProvider>
+      <SideBarProvider>
+        <OrderLayout />
+      </SideBarProvider>
     ),
     errorElement: <Error />,
     children: [

@@ -1,21 +1,44 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useReducer} from "react";
 
 const OrderContext = createContext();
 
-function OrderProvider({children}){
-    const [selectedSize, setSelectedSize] = useState(null);
-    const [isError, setIsError] = useState(false);
+const initialState = {
+    product: null,
+    selectedSize: null,
+    isError: false
+}
 
-    function placeOrder(){
+function orderReducer(state, action){
+    switch(action.type){
+        case "selectSize":
+            return {...state, selectedSize:action.payload, isError:false}
+        case "selectCountry":
+            return {...state, selectedSize:initialState.selectedSize}
+        case "placeOrder": {
+            const order = {...action.payload, size:state.selectedSize}
+            return {...state, product:order}
+        }
+        case "Error":
+            return {...state, isError: true}
+        default:
+            return initialState;
+    }
+}
+
+function OrderProvider({children}){
+    const [state, dispatch] = useReducer(orderReducer, initialState);
+    const {selectedSize, isError} = state;
+
+    async function placeOrder(order){
         if(selectedSize === null) {
-            setIsError(true);
+            dispatch({type:"Error"});
             return;
         }
         alert("successfully placed order");
-        setSelectedSize(null)
+        dispatch({type:"placeOrder", payload:order});
     }
 
-    return <OrderContext.Provider value={{selectedSize, setSelectedSize, isError, setIsError, placeOrder}}>
+    return <OrderContext.Provider value={{selectedSize, isError, dispatch, placeOrder}}>
         {children}
     </OrderContext.Provider>
 }

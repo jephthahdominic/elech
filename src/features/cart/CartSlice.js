@@ -25,10 +25,15 @@ export default function CartReducer(state = initialState, action){
     }
 }
 
-export function add(item){
-    return {type:"cart/add", payload: item}
+export function addItemToCart(item, size){
+    const incomingOrder = {...item, size}
+    console.log("successfully added item to cart")
+
+    return (dispatch)=>{
+        dispatch({type:"cart/add", payload:incomingOrder});
+    }
 }
 
-export function remove(itemId){
+export function removeItemFromCart(itemId){
     return {type:"cart/remove", payload: itemId}
 }

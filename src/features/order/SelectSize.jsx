@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
-import { useOrder } from './OrderContext';
 
 const sizes  = [
     {
@@ -17,18 +16,15 @@ const sizes  = [
     }
 ]
 
-export default function SelectSize() {
+export default function SelectSize({selectedSize, setSelectedSize, isError, setIsError}) {
     const [countrySize, setCountrySize] = useState("EU");
     const [index, setIndex] = useState(0);
     const [changeCountry, setChangeCountry] = useState(false);
-
-    const {selectedSize, setSelectedSize, isError, setIsError} = useOrder()
 
     function selectCountry(country, index){
         setIndex(index)
         setCountrySize(country);
         setChangeCountry(s=>!s);
-        setSelectedSize(null)
     }
     
   return (
