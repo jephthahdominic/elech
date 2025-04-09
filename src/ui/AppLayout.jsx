@@ -5,7 +5,7 @@ import SideBar from "./Sidebar";
 export function MarkettingAppLayout() {
   
   return (
-    <div>
+    <div className="max-h-screen">
       <Header toggles={true} cart={true}/>
       <main className="h-full max-xl:px-3 max-xl:py-5 xl:flex xl:gap-28">
         <SideBar />
@@ -28,7 +28,7 @@ export function AuthAppLayout() {
 
 export function OrderLayout(){
   return(
-    <div>
+    <div className="max-h-screen">
       <Header toggles={true} noSearchBar={true}/>
       <SideBar />
       <main>
