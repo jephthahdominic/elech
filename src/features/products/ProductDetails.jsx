@@ -61,7 +61,7 @@ export default function ProductDetails({product}) {
             isError = {isError}
             setIsError = {setIsError}
           />
-          <Description product = {product}/>
+          <Description description = {product?.description}/>
           <Reviews product={product}/> 
         </section>
 
