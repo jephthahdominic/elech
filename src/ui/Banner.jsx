@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import elech from '../assets/images/Elech.jpg'
 import promotion2 from '../assets/images/promotion2.jpg'
 
-const promotions = [elech, promotion2]
+const promotions = [promotion2, elech]
 
 export default function Banner() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -20,7 +20,7 @@ export default function Banner() {
     <div className={`w-[100%] overflow-hidden relative mt-5`}>
       <div style={{transform: `translateX(-${currentImage * 100}%)`}} className={`w-[${promotions.length * 100}%] flex transition-transform duration-[0.5s]`}>
         {promotions.map((promotion, i) => (
-          <img key={i} src={promotion} className='min-w-[100%] h-[350px] object-cover rounded-xl'/>
+          <img key={i} src={promotion} className='min-w-[100%] h-[300px] object-cover rounded-xl'/>
         ))}
       </div>
     </div>

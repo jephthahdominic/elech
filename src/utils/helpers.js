@@ -7,6 +7,10 @@ export function formatCurrency(value){
     }).format(value)
 }
 
+export function formatPhoneNumber(phone){
+    return phone.replace(/(\d{4})(\d{3})(\d{4})/, '$1 $2 $3');
+} 
+
 export function validateFullName(value){
     return /^[A-Za-z\s!@#$%^&*(),.?':;_-]+$/.test(value) ? "":"Your fullName can only be letters"
 }
