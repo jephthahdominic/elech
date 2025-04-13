@@ -41,7 +41,7 @@ export default function Home() {
           Shoes
         </Link> 
         <Link className="flex flex-col items-center text-[1.1rem] text-darkTransparent">
-          <div className={`bg-[url(${sandals})] w-[100px] h-[100px]`}></div>
+          <img src={sandals} alt="shoes"  className="object-contain rounded-[10px] h-[80px] w-[80px]"/>
           Sandals
         </Link>
         <Link className="flex flex-col items-center text-[1.1rem] text-darkTransparent">
