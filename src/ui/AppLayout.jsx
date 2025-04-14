@@ -7,7 +7,7 @@ export function MarkettingAppLayout() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header toggles={true} cart={true}/>
-      <main className="flex-1 flex h-full max-xl:px-3 max-xl:py-5 xl:flex xl:gap-28">
+      <main className="flex-1 flex max-xl:px-3 max-xl:py-5 xl:flex xl:gap-28">
         <SideBar />
         <Outlet />
       </main>
