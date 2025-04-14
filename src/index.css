@@ -13,7 +13,7 @@
   scroll-behavior: smooth;
 }
 body{
-  background-color: darkgray;
+  background-color: #Fafafa;
 }
 
 @layer components {

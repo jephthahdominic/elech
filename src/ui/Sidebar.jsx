@@ -48,10 +48,10 @@ export default function SideBar() {
                 </div>
             </div>
             <div className='absolute bottom-0 z-10 w-full p-4 flex flex-col gap-3 '>
-                <div className='flex items-center justify-center gap-2 text-[1.25rem] font-medium text-black rounded-md p-3 bg-white'>
+                <div className='flex items-center gap-2 text-[1.25rem] font-medium text-black rounded-[10px] border border-1 border-[rgba(125,125,125,0.2)] p-3 bg-white'>
                     <AiOutlineCustomerService className=' text-[1.5rem]'/> Customer support
                 </div>
-                {user !== null && <div className='flex items-center justify-center gap-2 text-{1.25rem} font-medium text-[red] rounded-md p-3' onClick={()=>logout()}>
+                {user !== null && <div className='flex items-center gap-2 text-{1.25rem} font-medium text-[white] bg-red-500 border border-1 border-[rgba(125,125,125,0.2)] rounded-[10px] p-3' onClick={()=>logout()}>
                     <BiLogOut className='text-[1.5rem]'/> Log out
                 </div>}
             </div>

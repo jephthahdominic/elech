@@ -63,7 +63,8 @@ export default {
         }
       },
       animation: {
-        fade:'fade 1s ease-in-out infinite',
+        fade:'fade .1s ease-in-out',
+        loading:'fade 1s ease-in-out infinite',
         displace:'displace .5s ease-in-out',
         return:'return .5s ease-in-out',
         appearRTL: 'appearRTL .1s linear',
