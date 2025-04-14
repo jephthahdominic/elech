@@ -5,9 +5,9 @@ import SideBar from "./Sidebar";
 export function MarkettingAppLayout() {
   
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen">
       <Header toggles={true} cart={true}/>
-      <main className="flex-1 flex max-xl:px-3 max-xl:py-5 xl:flex xl:gap-28">
+      <main className="max-xl:px-3 max-xl:py-5 xl:flex xl:gap-28 mt-[4.5rem]">
         <SideBar />
         <Outlet />
       </main>
@@ -31,7 +31,7 @@ export function OrderLayout(){
     <div className="h-screen">
       <Header toggles={true} noSearchBar={true}/>
       <SideBar />
-      <main>
+      <main className="">
         <Outlet />
       </main>
     </div>

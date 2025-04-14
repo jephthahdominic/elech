@@ -65,7 +65,7 @@ export default function ProductDetails({product}) {
           <Reviews product={product}/> 
         </section>
 
-        <section className={`w-full mt-4 flex items-center gap-6 fixed bottom-1 py-5 left-0 px-2 bg-[rgba(250,250,250,0.6)]`}>
+        <section className={`w-full mt-4 flex items-center gap-6 fixed bottom-0 py-5 left-0 px-2 bg-[rgba(250,250,250,0.6)]`}>
           <Button className={'flex-1 h-[56px] bg-primary border border-primary rounded-[10px] text-[1.125rem] font-semibold tracking-wide text-[#f8f8f8]'}
             onClick={()=>createOrder()}>
             Order Now

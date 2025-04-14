@@ -8,7 +8,7 @@ export default function Description({description}) {
     onClick={()=>setReadMore(s=>!s)}>
       <h2 className='font-sans font-regular text-[1.5rem] text-[rgb(33,33,33)]'>Description</h2>
       <p className='text-darkTransparent text-[1rem] mt-2 leading-loose tracking-normal text-justify'>{description}</p>
-      <div className={`${!readMore && 'absolute'} w-full right-3 bottom-0 z-10 flex justify-end`}>
+      <div className={`${!readMore && 'absolute'} w-full right-3 bottom-0 flex justify-end`}>
         {!readMore ? <span className='text-[1.125rem] flex items-center gap-1 font-semibold'>Read more <FiChevronsRight /></span> : <span
         className='text-[1.125rem] flex items-center gap-1 font-semibold'>Read less <FiChevronsLeft /></span>}
       </div>

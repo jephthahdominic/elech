@@ -9,6 +9,7 @@ import shoes from "../assets/images/mathias-reding-_sHFGxvlNoI-unsplash.jpg"
 import sandals from "../assets/images/IMG-20250308-WA0010.jpg"
 import belts from "../assets/images/seeetz-OTHeFuAhNZ0-unsplash.jpg"
 import { BiSolidGrid } from "react-icons/bi";
+import NavBar from "./NavBar";
 
 export default function Home() {
   const {getProducts, products, isLoading} = useProducts();
@@ -23,7 +24,7 @@ export default function Home() {
   if(isLoading) return <Loader/>
   
   return (
-    <div className="flex-1 xl:pr-3">
+    <div className="xl:pr-3">
       <SearchBar />
 
       {/* <div className="my-6 bg-green-900 p-2 px-3 rounded-[10px]">
@@ -32,23 +33,7 @@ export default function Home() {
 
       <Banner />
 
-      <div className="w-full flex items-center justify-between mt-10 overflow-x-scroll flex-nowrap">
-        <Link className="text-[1.1rem] text-darkTransparent">
-          <BiSolidGrid className="text-[4rem] text-[#121212]"/> Explore
-        </Link>
-        <Link className="flex flex-col items-center text-[1.1rem] text-darkTransparent">
-          <img src={shoes} alt="shoes" width={90} height={80} className="object-contain rounded-full"/>
-          Shoes
-        </Link> 
-        <Link className="flex flex-col items-center text-[1.1rem] text-darkTransparent">
-          <img src={sandals} alt="shoes"  className="object-contain rounded-[10px] h-[80px] w-[80px]"/>
-          Sandals
-        </Link>
-        <Link className="flex flex-col items-center text-[1.1rem] text-darkTransparent">
-          <img src={belts} alt="shoes"  className="object-contain rounded-[10px] h-[80px] w-[80px]"/>
-          Belts
-        </Link>
-      </div>
+      <NavBar />
 
       <section className='mt-10'>
         <h2 className='font-playfair text-[1.75rem] text-[#212121] font-semibold'>Top Orders</h2>

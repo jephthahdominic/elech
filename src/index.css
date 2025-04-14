@@ -21,7 +21,9 @@ body{
     max-width: 1440px;
     margin: 0 auto;
   }
-
+  .verticalNav::-webkit-scrollbar{
+    display: none;
+  }
   .input {
     @apply sm:flex-1 max-sm:w-full text-base leading-normal text-slate-gray pl-5 max-sm:p-5 outline-none sm:border-none border max-sm:border-slate-gray max-sm:rounded-full;
   }
@@ -83,6 +85,7 @@ body{
     background: linear-gradient(to bottom, rgba(250,250,250,0.5), rgba(250,250,250,1));
     height: 30px;
     width: 100%;
+    z-index: -1;
   }
   .custom-scrollbar-gradient{
     background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,1));

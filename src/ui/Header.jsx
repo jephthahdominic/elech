@@ -13,7 +13,7 @@ export default function Header({cart, search, noSearchBar}) {
   }
 
   return (
-    <header className='h-auto w-full py-3 px-4 shadow shadow-[30px 0 25px 20px rgb(0 0 0 / 0.1)] flex items-center justify-between'>
+    <header className='bg-[#fafafaee] fixed top-0 z-10 h-auto w-full py-3 px-4 shadow shadow-[30px 0 25px 20px rgb(0 0 0 / 0.1)] flex items-center justify-between'>
         <div className='flex-1 flex items-center gap-10'>
           <Logo />
           {search && <input placeholder='Search for anything here'  className='w-1/3 px-4 py-2 rounded-full max-xl:hidden
