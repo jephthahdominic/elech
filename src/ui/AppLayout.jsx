@@ -31,7 +31,7 @@ export function OrderLayout(){
     <div className="h-screen">
       <Header toggles={true} noSearchBar={true}/>
       <SideBar />
-      <main className="">
+      <main className="mt-[4.5rem]">
         <Outlet />
       </main>
     </div>
