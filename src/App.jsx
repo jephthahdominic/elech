@@ -15,15 +15,18 @@ import ProtectedRoutes from "./features/userAccount/ProtectedRoutes"
 import { SideBarProvider } from "./contexts/SidebarContext"
 import Logout from "./features/userAccount/Logout"
 import Product from "./features/products/Product"
+import { UserProvider } from "./contexts/UserContext"
 
 const router = createBrowserRouter([
   {
     element: (
-      <SideBarProvider>
-        <ProductsProvider>
-          <MarkettingAppLayout />
-        </ProductsProvider>
-      </SideBarProvider>
+      <UserProvider>
+        <SideBarProvider>
+          <ProductsProvider>
+            <MarkettingAppLayout />
+          </ProductsProvider>
+        </SideBarProvider>
+      </UserProvider>
     ),
     errorElement: <Error />,
     children: [
