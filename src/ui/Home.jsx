@@ -37,7 +37,7 @@ export default function Home() {
       </div>
 
       <section className='mt-10'>
-        <h2 className='font-montserrat text-[1.5rem] text-[#212121] font-semibold'>Top Orders</h2>
+        <h2 className='font-montserrat text-[1.5rem] text-[#212121] font-medium'>Top Orders</h2>
         <div className='relative flex items-center'>
           <div className='w-full flex items-center gap-4 mt-3 pr-3 overflow-auto scrollbar-hide' id='categoryBar'>
             {
@@ -50,7 +50,7 @@ export default function Home() {
       </section>
       <section className='mt-14'>
         <div className='flex justify-between items-center px-1'>
-          <h2 className='font-montserrat text-[1.5rem] text-[#212121] font-semibold'>Coporate shoes</h2>
+          <h2 className='font-montserrat text-[1.5rem] text-[#212121] font-medium'>Coporate shoes</h2>
           <Link className='font-montserrat text-[1.125rem] text-darkTransparent'>Explore</Link>
         </div>
         <div className='w-full flex items-center gap-4 mt-3 overflow-auto scrollbar-hide'>
@@ -64,7 +64,7 @@ export default function Home() {
       {products.filter(product => product.category === "sandals").length !== 0 && (
         <section className='mt-14'>
           <div className='flex justify-between items-center px-1'>
-            <h2 className='font-montserrat text-[1.5rem] text-[#212121] font-semibold'>Sandals</h2>
+            <h2 className='font-montserrat text-[1.5rem] text-[#212121] font-medium'>Sandals</h2>
             <Link className='font-montserrat text-[1.125rem] text-darkTransparent'>Explore</Link>
           </div>
           <div className='w-full flex items-center gap-4 mt-3 overflow-auto scrollbar-hide'>
