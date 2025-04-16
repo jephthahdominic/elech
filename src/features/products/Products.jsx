@@ -4,11 +4,21 @@ import SearchBar from "../../ui/SearchBar";
 import SearchResult from "./SearchResult";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../ui/NavBar";
+import { useEffect, useState } from "react";
+import Loader from "../../ui/Loader";
 
 export default function Products() {
+  const [isLoading, setIsLoading] = useState(true)
+  const {products, getProducts} = useProducts();
+  const navigate = useNavigate();
 
-  const {products} = useProducts();
-  const navigate = useNavigate()
+  useEffect(()=>{ 
+    getProducts();
+    if(products) setIsLoading(false)
+
+  }, [getProducts, products])
+
+  if(isLoading) return <Loader />
   
   return (
     <div>
