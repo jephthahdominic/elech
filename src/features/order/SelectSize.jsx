@@ -30,7 +30,7 @@ export default function SelectSize({selectedSize, setSelectedSize, isError, setI
   return (
     <section className={`py-5 mt-4 ${isError && 'border-2 border-red-600 px-3 rounded-[10px]'}`} id='selectSize'>
         <div className='flex justify-between items-start relative'>
-            <span className='text-[1.5rem] font-serif text-[#212121]'>Select Size</span>
+            <span className='text-[1.5rem] font-montserrat text-[#212121]'>Select Size</span>
             <div className='border absolute right-0 bg-white'>
                 <div className='flex py-1 px-2 gap-20 items-center' onClick={()=>setChangeCountry(s=>!s)}>
                     {countrySize} {!changeCountry ? <FiChevronDown /> : <FiChevronUp/> }

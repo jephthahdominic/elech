@@ -5,11 +5,7 @@ import SearchBar from "./SearchBar";
 import { useProducts } from "../contexts/ProductContext";
 import { useEffect } from "react";
 import Loader from "./Loader";
-import shoes from "../assets/images/mathias-reding-_sHFGxvlNoI-unsplash.jpg"
-import sandals from "../assets/images/IMG-20250308-WA0010.jpg"
-import belts from "../assets/images/seeetz-OTHeFuAhNZ0-unsplash.jpg"
-import { BiSolidGrid } from "react-icons/bi";
-import NavBar from "./NavBar";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 export default function Home() {
   const {getProducts, products, isLoading} = useProducts();
@@ -33,10 +29,15 @@ export default function Home() {
 
       <Banner />
 
-      <NavBar />
+      <div className="rounded-[10px] bg-primary">
+        <Link to={'/products'} className="flex items-center justify-between mt-10 p-6 text-[1.25rem] font-montserrat text-white font-medium">
+          Explore All Products
+          <FaArrowRightLong/>
+        </Link>
+      </div>
 
       <section className='mt-10'>
-        <h2 className='font-playfair text-[1.75rem] text-[#212121] font-semibold'>Top Orders</h2>
+        <h2 className='font-montserrat text-[1.5rem] text-[#212121] font-semibold'>Top Orders</h2>
         <div className='relative flex items-center'>
           <div className='w-full flex items-center gap-4 mt-3 pr-3 overflow-auto scrollbar-hide' id='categoryBar'>
             {
@@ -49,8 +50,8 @@ export default function Home() {
       </section>
       <section className='mt-14'>
         <div className='flex justify-between items-center px-1'>
-          <h2 className='font-playfair text-[1.75rem] text-[#212121] font-semibold'>Coporate shoes</h2>
-          <Link className='text-[1.125rem] text-darkTransparent'>Explore</Link>
+          <h2 className='font-montserrat text-[1.5rem] text-[#212121] font-semibold'>Coporate shoes</h2>
+          <Link className='font-montserrat text-[1.125rem] text-darkTransparent'>Explore</Link>
         </div>
         <div className='w-full flex items-center gap-4 mt-3 overflow-auto scrollbar-hide'>
           {
@@ -63,8 +64,8 @@ export default function Home() {
       {products.filter(product => product.category === "sandals").length !== 0 && (
         <section className='mt-14'>
           <div className='flex justify-between items-center px-1'>
-            <h2 className='font-playfair text-[1.75rem] text-[#212121] font-semibold'>Sandals</h2>
-            <Link className='text-[1.125rem] text-darkTransparent'>Explore</Link>
+            <h2 className='font-montserrat text-[1.5rem] text-[#212121] font-semibold'>Sandals</h2>
+            <Link className='font-montserrat text-[1.125rem] text-darkTransparent'>Explore</Link>
           </div>
           <div className='w-full flex items-center gap-4 mt-3 overflow-auto scrollbar-hide'>
             {

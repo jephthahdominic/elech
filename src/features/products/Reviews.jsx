@@ -1,21 +1,13 @@
 import {StarRating} from './ProductRating';
 import { FaCircleUser } from 'react-icons/fa6';
-import { calculateAvgRating } from './ProductRating';
 
 export default function Reviews({product}) {
   const reviews = product?.reviews;
-  console.log(reviews)
-
-  const averageRating = calculateAvgRating(reviews);
 
   return (
     <div className='p-4 px-1 mt-6 '>
       <header className='flex items-center justify-between'>
-        <h2 className='font-sans font-regular text-[1.5rem]'>Top reviews</h2>
-        {reviews ? <div className='flex items-center gap-1'>
-          <span className=''>{averageRating}</span>
-          <StarRating rating={averageRating}/>
-        </div> : <span className='text-dark-gray italic'>No reviews yet</span>}
+        <h2 className='font-montserrat font-regular text-[1.5rem]'>Reviews</h2>
       </header>
       <section className='w-full my-4'>
         <textarea className='w-full bg-light-gray p-3 rounded-[10px] focus:outline-none' placeholder='Write a review' 

@@ -11,24 +11,16 @@ import { addItemToCart } from "../cart/CartSlice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import CreateOrder from "../order/CreateOrder";
+import { calculateAvgRating, StarRating } from "./ProductRating";
 
 export default function ProductDetails({product}) {
   
   const [selectedSize, setSelectedSize] = useState(null);
   const [isError, setIsError] = useState(false);
   const dispatch = useDispatch()
-
   const navigate = useNavigate()
 
-
-  function createOrder(){
-    if(selectedSize === null){
-      setIsError(true);
-      return;
-    }
-
-    console.log("successfully placed order")
-  }
+  const averageRating = calculateAvgRating(product?.reviews);
 
   function handleAddToCart(){
     if(selectedSize === null){
@@ -50,9 +42,13 @@ export default function ProductDetails({product}) {
         <ScrollableProductImages/>
 
         <section className='mt-3'>
-            <h1 className='font-playfair font-regular text-[2rem] leading-tight'>{product?.name}</h1>
-            <p className='text-[1.35rem] text-slate-500'>{product?.category}</p>
-            <p className='mt-4 text-[1.5rem] font-regular text-[#212121]'>{formatCurrency(product?.price)}</p>
+            <h1 className='font-montserrat font-regular text-[1.75rem] leading-normal'>{product?.name}</h1>
+            {product?.reviews ? <div className='mt-2 flex items-center gap-1 flex-row-reverse justify-end'>
+              <span className=''>{averageRating}</span>
+              <StarRating rating={averageRating}/>
+            </div> : <span className='text-dark-gray italic'>No reviews yet</span>}
+            <p className='font-montserrat text-[1.35rem] mt-2 text-slate-500'>{product?.category}</p>
+            <p className='mt-4 text-[1.5rem] font-roboto font-regular text-[#212121]'>{formatCurrency(product?.price)}</p>
         </section>
 
         <section>
@@ -67,7 +63,7 @@ export default function ProductDetails({product}) {
         </section>
 
         <section className={`w-full mt-4 flex items-center gap-6 fixed bottom-0 py-5 left-0 px-2 bg-[rgba(250,250,250,0.6)]`}>
-          <CreateOrder />
+          <CreateOrder amount = {product?.price} selectedSize={selectedSize} setIsError={setIsError}/>
           <Button className={'h-[56px] border bg-white border-primary px-8 rounded-[10px]'} onClick={()=>handleAddToCart()}>
             <BiCartAdd className='text-[1.5rem]' />
           </Button>

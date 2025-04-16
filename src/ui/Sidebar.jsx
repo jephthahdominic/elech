@@ -12,8 +12,6 @@ export default function SideBar() {
 
     const navigate = useNavigate()
 
-    console.log(user);
-
     async function logout(){
         navigate('/logout')
     }
@@ -51,7 +49,7 @@ export default function SideBar() {
                 <div className='flex items-center gap-2 text-[1.25rem] font-medium text-black rounded-[10px] border border-1 border-[rgba(125,125,125,0.2)] p-3 bg-white'>
                     <AiOutlineCustomerService className=' text-[1.5rem]'/> Customer support
                 </div>
-                {user !== null && <div className='flex items-center gap-2 text-{1.25rem} font-medium text-[white] bg-red-500 border border-1 border-[rgba(125,125,125,0.2)] rounded-[10px] p-3' onClick={()=>logout()}>
+                {user !== null && <div className='flex items-center gap-2 text-{1.25rem} font-medium text-red-500 bg-white border border-1 border-[rgba(125,125,125,0.2)] rounded-[10px] p-3' onClick={()=>logout()}>
                     <BiLogOut className='text-[1.5rem]'/> Log out
                 </div>}
             </div>
