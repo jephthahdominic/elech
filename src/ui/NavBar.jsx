@@ -7,7 +7,7 @@ export default function NavBar() {
             All
         </Link>
         <Link className="text-[1.1rem] text-darkTransparent px-5 py-1 border-2 border-[125,125,125,0.6] rounded-full">
-            Shoes
+            Corporate Shoes
         </Link> 
         <Link className="text-[1.1rem] text-darkTransparent px-5 py-1 border-2 border-[125,125,125,0.6] rounded-full">
             Sandals
