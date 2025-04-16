@@ -16,7 +16,7 @@ export default function Products() {
     getProducts();
     if(products) setIsLoading(false)
 
-  }, [getProducts, products])
+  }, [])
 
   if(isLoading) return <Loader />
   
@@ -31,7 +31,7 @@ export default function Products() {
       </div>
       <section className="grid grid-cols-2 gap-3 mt-8">
         {products.map((product, id)=>(
-          <SearchResult key ={id} result={product}/>
+          <SearchResult key={id} result={product}/>
         ))}
       </section>
     </div>

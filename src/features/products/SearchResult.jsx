@@ -6,7 +6,7 @@ import { calculateAvgRating, StarRating } from "./ProductRating";
 export default function SearchResult({result}) {
     console.log(result)
   return (
-    <Link to={`/products/${result.id}`} className='max-w-full border border-light-gray rounded-t-xl'>
+    <Link to={`/products/${result?.id}`} className='max-w-full border border-light-gray rounded-t-xl'>
       <div className='bg-light-gray mb-2 rounded-t-xl'>
           <img src={dummyShoe} alt="" width={200} height={200} className='object-center'/>
       </div>
