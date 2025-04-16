@@ -30,7 +30,7 @@ export default function Home() {
       <Banner />
 
       <div className="rounded-[10px] bg-primary">
-        <Link to={'/products'} className="flex items-center justify-between mt-10 p-6 text-[1.25rem] font-montserrat text-white font-medium">
+        <Link to={'/products'} className="flex items-center justify-between mt-10 p-6 text-[1.125rem] font-montserrat text-white font-medium">
           Explore All Products
           <FaArrowRightLong/>
         </Link>

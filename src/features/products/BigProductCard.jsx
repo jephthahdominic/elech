@@ -10,7 +10,7 @@ export default function BigProductCard({product}){
         <img src={dummyShoe} alt={'product image'} className=" object-contain" loading="lazy"/>
       </div>
       <div className="pl-2 py-1">
-        <h1 className="text-[1.25rem] font-montserrat font-medium text-[#212121] leading-normal mt-2">{product.name}</h1>
+        <h1 className="text-[1.125rem] font-montserrat font-medium text-[#212121] leading-normal mt-2">{product.name}</h1>
         <div className="mt-2"><StarRating rating = {calculateAvgRating(product.reviews)}/></div>
         {/* <p className="text-[1.1rem] text-[#757575] mt-1">{product.category}</p> */}
         <span className="text-[1.125rem] text-[#212121] font-medium block mt-5">{formatCurrency(product.price)}</span>
