@@ -20,7 +20,7 @@ export default function Home() {
   if(isLoading) return <Loader/>
   
   return (
-    <div className="xl:pr-3">
+    <div className="xl:pr-3 lg:w-[70%]">
       <SearchBar />
 
       {/* <div className="my-6 bg-green-900 p-2 px-3 rounded-[10px]">

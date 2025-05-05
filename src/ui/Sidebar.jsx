@@ -17,18 +17,18 @@ export default function SideBar() {
     }
     
   return (
-    <div className={`max-xl:w-full xl:min-w-[25%] h-screen flex max-xl:justify-end max-xl:fixed z-40 max-xl:top-0 left-0 xl:bg-transparent 
-    bg-[rgba(0,0,0,0.37)] shadow shadow-[30px 0 25px 20px rgb(0 0 0 / 0.1)] ${!isSidebarOpen && 'max-xl:hidden'} animate-fade`}>
-        <nav className='max-xl:fixed xl:relative z-40 bg-white h-full max-xl:w-[85%] xl:w-full animate-appearRTL'>
-            <header className='px-4 py-4 w-full relative border-b-[3px] border-b-[3px solid E5E7EB]'>
-                <IoClose className='text-[28px] absolute right-4 xl:hidden' onClick={()=>setIsSidebarOpen(s=>!s)}/>
+    <div className={`max-lg:w-full lg:min-w-[20%] h-screen lg:top-0 lg:py-12 flex max-xl:justify-end fixed lg:left-3 max-lg:z-40 max-lg:top-0 left-0 lg:bg-transparent 
+    bg-[rgba(0,0,0,0.37)] max-lg:shadow shadow-[30px 0 25px 20px rgb(0 0 0 / 0.1)] ${!isSidebarOpen && 'max-lg:hidden'} animate-fade`}>
+        <nav className='max-lg:fixed lg:top-9 lg:relative lg:flex lg:flex-col lg:justify-between lg:gap-10 max-xl:z-40 bg-white max-h-full overflow-auto xl:rounded-[10px] max-lg:w-[85%] xl:w-full animate-appearRTL'>
+            <header className='px-4 py-4 w-full relative border-b-[3px] lg:hidden'>
+                <IoClose className='text-[28px] absolute right-4 lg:hidden' onClick={()=>setIsSidebarOpen(s=>!s)}/>
                 <div className='mt-10'>
                     {user === null ? <Link to='login' className='inline-flex items-center gap-2 font-poppins font-normal text-xl'>
                         <FiUser className=' text-2xl'/> Sign in
                     </Link> : <h2 className='font-sans font-normal text-[1.5rem]'>Hi, {user?.displayName.split(" ")[0]}</h2>}
                 </div>
             </header>
-            <div className='px-4 mt-6 relative'>
+            <div className='px-4 relative pb-5'>
                 <p className='font-sans text-[1.25rem] mt-4 flex items-center gap-2'> Explore products</p>
                 <ul className='mt-4 pl-3 flex flex-col gap-3'>
                     <li className='py-1'>
@@ -41,20 +41,23 @@ export default function SideBar() {
                         <Link className='font-poppins font-light text-[1rem]'>Belts</Link>
                     </li>
                 </ul>
-                <div className='mt-6'>
-                    <p className='font-sans text-[1.25rem] mt-4 flex items-center gap-2'>My orders</p>
+                <div className='mt-10 cursor-pointer'>
+                    <p className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>My orders</p>
                 </div>
-            </div>
-            <div className='absolute bottom-0 z-10 w-full p-4 flex flex-col gap-3 '>
-                <div className='flex items-center gap-2 text-[1.25rem] font-medium text-black rounded-[10px] border border-1 border-[rgba(125,125,125,0.2)] p-3 bg-white'>
-                    <AiOutlineCustomerService className=' text-[1.5rem]'/> Customer support
+                <div className='mt-10 cursor-pointer'>
+                    <p className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>Request a custom shoe</p>
                 </div>
-                {user !== null && <div className='flex items-center gap-2 text-{1.25rem} font-medium text-red-500 bg-white border border-1 border-[rgba(125,125,125,0.2)] rounded-[10px] p-3' onClick={()=>logout()}>
-                    <BiLogOut className='text-[1.5rem]'/> Log out
-                </div>}
+                <div className='w-full flex flex-col gap-3 mt-10'>
+                    <div className='flex items-center gap-2 text-[1.25rem] font-regular text-black border-l-2 border-l-primary pl-3 cursor-pointer'>
+                        <AiOutlineCustomerService className=' text-[1.5rem]'/> Customer support
+                    </div>
+                    {user !== null && <div className='flex items-center gap-2 text-{1.25rem} mt-10 font-medium text-red-500 bg-white cursor-pointer' onClick={()=>logout()}>
+                        <BiLogOut className='text-[1.5rem]'/> Log out
+                    </div>}
+                </div>
             </div>
         </nav> 
-        <div className='fixed w-full h-full bg-inherit xl:hidden' onClick={()=>setIsSidebarOpen(s=>!s)}></div>
+        <div className='fixed w-full h-full bg-inherit lg:hidden' onClick={()=>setIsSidebarOpen(s=>!s)}></div>
     </div>
   )
 }

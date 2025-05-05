@@ -37,7 +37,7 @@ export default function Login() {
       
       if(formData.email.length === 0 || formData.password.length === 0) {
         setAuthError(true);
-        setAuthErrorMessage("All fields must be filled");
+        setAuthErrorMessage("All Fields Must be Filled");
         setIsLoading(false)
         return;
       }

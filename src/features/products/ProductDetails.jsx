@@ -32,7 +32,7 @@ export default function ProductDetails({product}) {
   }
 
   return (
-    <div>
+    <div className="xl:w-3/5">
       <div className="flex items-center gap-3">
         <BiChevronLeft className="text-[2rem]" onClick={()=>navigate(-1)}/>
         <SearchBar classes={'flex-1'}/>
@@ -62,7 +62,7 @@ export default function ProductDetails({product}) {
           <Reviews product={product}/> 
         </section>
 
-        <section className={`w-full mt-4 flex items-center gap-6 fixed bottom-0 py-5 left-0 px-2 bg-[rgba(250,250,250,0.6)]`}>
+        <section className={`w-full mt-4 flex items-center gap-6 max-xl:fixed bottom-0 py-5 left-0 px-2 bg-[rgba(250,250,250,0.6)]`}>
           <CreateOrder amount = {product?.price} selectedSize={selectedSize} setIsError={setIsError}/>
           <Button className={'h-[56px] border bg-white border-primary px-8 rounded-[10px]'} onClick={()=>handleAddToCart()}>
             <BiCartAdd className='text-[1.5rem]' />

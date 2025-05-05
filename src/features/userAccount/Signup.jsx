@@ -41,11 +41,12 @@ export default function Signup() {
 
   async function handleSubmit(e){
     e.preventDefault();
-    setIsLoading((s)=>!s)
+    setIsLoading(true)
 
     if(formData.fullName.length === 0 || formData.email.length === 0 || formData.password.length === 0){
       setAuthError(true);
-      setAuthErrorMessage("All fields must be filled")
+      setAuthErrorMessage("All fields must be filled");
+      setIsLoading(false)
       return
     } 
     
