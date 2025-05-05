@@ -17,7 +17,7 @@ export default function Banner() {
 
 
   return (
-    <div className={`w-[100%] overflow-auto relative mt-5`}>
+    <div className={`w-[100%] overflow-hidden max-lg:overflow-auto relative mt-5`}>
       <div style={{transform: `translateX(-${currentImage * 100}%)`}} className={`w-[${promotions.length * 100}%] flex transition-transform duration-[0.5s]`}>
         {promotions.map((promotion, i) => (
           <img key={i} src={promotion} className='min-w-[100%] h-[300px] object-cover rounded-xl'/>
