@@ -29,8 +29,8 @@ export default function SideBar() {
                 </div>
             </header>
             <div className='px-4 relative pb-5'>
-                <p className='font-sans text-[1.25rem] mt-4 flex items-center gap-2'> Explore products</p>
-                <ul className='mt-4 pl-3 flex flex-col gap-3'>
+                <p className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'> Explore products</p>
+                <ul className='mt-4 pl-5 flex flex-col gap-3'>
                     <li className='py-1'>
                         <Link className='w-full font-poppins font-light text-[1rem]'>Corporate shoes</Link>
                     </li>
