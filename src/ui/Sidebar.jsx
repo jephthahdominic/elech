@@ -1,10 +1,10 @@
 import { FiUser } from 'react-icons/fi'
-import { IoClose } from 'react-icons/io5'
+import { IoCart, IoClose, IoConstruct } from 'react-icons/io5'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSidebar } from '../contexts/SidebarContext'
 import { useUser } from '../contexts/UserContext';
-import { BiLogOut } from 'react-icons/bi';
-import { AiOutlineCustomerService } from 'react-icons/ai';
+import { BiLogOut, BiSolidDashboard } from 'react-icons/bi';
+import { AiFillDashboard, AiFillShop, AiOutlineCustomerService } from 'react-icons/ai';
 
 export default function SideBar() {
     const {isSidebarOpen, setIsSidebarOpen} = useSidebar();
@@ -30,10 +30,14 @@ export default function SideBar() {
             </header>
             <div className='px-4 relative pb-5 py-2'>
                 <div className='cursor-pointer'>
-                    <Link className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>Dashboard</Link>
+                    <Link className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>
+                        <BiSolidDashboard /> Dashboard
+                    </Link>
                 </div>
                 <div className='mt-8'>
-                    <p className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'> Explore products</p>
+                    <p className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'> 
+                        <AiFillShop /> Explore products
+                    </p>
                     <ul className='mt-4 pl-5 flex flex-col gap-3'>
                         <li className='py-1'>
                             <Link className='w-full font-poppins font-light text-[1rem]'>Corporate shoes</Link>
@@ -47,10 +51,13 @@ export default function SideBar() {
                     </ul>
                 </div>
                 <div className='mt-10 cursor-pointer'>
-                    <span className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>My orders</span>
+                    <span className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>
+                        <IoCart /> My orders
+                    </span>
                 </div>
                 <div className='mt-10 cursor-pointer'>
-                    <Link className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>Request a custom shoe</Link>
+                    <Link className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>
+                    <IoConstruct /> Request a custom shoe</Link>
                 </div>
                 <div className='w-full flex flex-col gap-3 mt-10'>
                     <Link className='flex items-center gap-2 text-[1.25rem] font-regular text-black border-l-2 border-l-primary pl-3 cursor-pointer'>
