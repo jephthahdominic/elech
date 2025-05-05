@@ -28,29 +28,34 @@ export default function SideBar() {
                     </Link> : <h2 className='font-sans font-normal text-[1.5rem]'>Hi, {user?.displayName.split(" ")[0]}</h2>}
                 </div>
             </header>
-            <div className='px-4 relative pb-5'>
-                <p className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'> Explore products</p>
-                <ul className='mt-4 pl-5 flex flex-col gap-3'>
-                    <li className='py-1'>
-                        <Link className='w-full font-poppins font-light text-[1rem]'>Corporate shoes</Link>
-                    </li>
-                    <li className='py-1'>
-                        <Link className='font-poppins font-light text-[1rem]'>Sandals</Link>
-                    </li>
-                    <li className='py-1'>
-                        <Link className='font-poppins font-light text-[1rem]'>Belts</Link>
-                    </li>
-                </ul>
-                <div className='mt-10 cursor-pointer'>
-                    <p className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>My orders</p>
+            <div className='px-4 relative pb-5 py-2'>
+                <div className='cursor-pointer'>
+                    <Link className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>Dashboard</Link>
+                </div>
+                <div className='mt-8'>
+                    <p className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'> Explore products</p>
+                    <ul className='mt-4 pl-5 flex flex-col gap-3'>
+                        <li className='py-1'>
+                            <Link className='w-full font-poppins font-light text-[1rem]'>Corporate shoes</Link>
+                        </li>
+                        <li className='py-1'>
+                            <Link className='font-poppins font-light text-[1rem]'>Sandals</Link>
+                        </li>
+                        <li className='py-1'>
+                            <Link className='font-poppins font-light text-[1rem]'>Belts</Link>
+                        </li>
+                    </ul>
                 </div>
                 <div className='mt-10 cursor-pointer'>
-                    <p className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>Request a custom shoe</p>
+                    <span className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>My orders</span>
+                </div>
+                <div className='mt-10 cursor-pointer'>
+                    <Link className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>Request a custom shoe</Link>
                 </div>
                 <div className='w-full flex flex-col gap-3 mt-10'>
-                    <div className='flex items-center gap-2 text-[1.25rem] font-regular text-black border-l-2 border-l-primary pl-3 cursor-pointer'>
+                    <Link className='flex items-center gap-2 text-[1.25rem] font-regular text-black border-l-2 border-l-primary pl-3 cursor-pointer'>
                         <AiOutlineCustomerService className=' text-[1.5rem]'/> Customer support
-                    </div>
+                    </Link>
                     {user !== null && <div className='flex items-center gap-2 text-{1.25rem} mt-10 font-medium text-red-500 bg-white cursor-pointer' onClick={()=>logout()}>
                         <BiLogOut className='text-[1.5rem]'/> Log out
                     </div>}
