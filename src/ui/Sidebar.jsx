@@ -19,7 +19,7 @@ export default function SideBar() {
   return (
     <div className={`max-lg:w-full lg:min-w-[20%] h-screen lg:top-0 lg:py-12 flex max-xl:justify-end fixed lg:left-3 max-lg:z-40 max-lg:top-0 left-0 lg:bg-transparent 
     bg-[rgba(0,0,0,0.37)] max-lg:shadow shadow-[30px 0 25px 20px rgb(0 0 0 / 0.1)] ${!isSidebarOpen && 'max-lg:hidden'} animate-fade`}>
-        <nav className='max-lg:fixed lg:top-9 lg:relative lg:flex lg:flex-col lg:justify-between lg:gap-10 max-xl:z-40 bg-white max-h-full overflow-auto xl:rounded-[10px] max-lg:w-[85%] xl:w-full animate-appearRTL'>
+        <nav className='max-lg:fixed lg:top-9 lg:relative lg:flex lg:flex-col lg:justify-between lg:gap-10 max-xl:z-40 bg-white h-full lg:max-h-full overflow-auto xl:rounded-[10px] max-lg:w-[85%] xl:w-full animate-appearRTL'>
             <header className='px-4 py-4 w-full relative border-b-[3px] lg:hidden'>
                 <IoClose className='text-[28px] absolute right-4 lg:hidden' onClick={()=>setIsSidebarOpen(s=>!s)}/>
                 <div className='mt-10'>
