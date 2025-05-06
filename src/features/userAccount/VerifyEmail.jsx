@@ -49,28 +49,11 @@ export default function VerifyEmail() {
 export function VerificationSuccess(){
   const navigate = useNavigate()
   useEffect(()=>{
+    console.log(auth.currentUser)
 
-    const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
-      if(currentUser.emailVerified) {
-        async function addUserToDb(){
-          const role = currentUser.email==="elech@admin.com" ? "admin" : "user";
-  
-          await setDoc(doc(firestoreDb, "users", user.uid), {
-            email:currentUser.email,
-            userName: currentUser.displayName,
-            role
-          })
-  
-          console.log(`user registered with role ${role}`)
-          navigate('/')
-        }
-        addUserToDb()
-      }
-    });
-
-    return ()=> unsubscribe()
+    // return ()=> unsubscribe()
     
-  }, [navigate]);
+  }, []);
   return(
     <div className="h-screen">
       <div className="text-center py-20 px-3 flex flex-col items-center">
