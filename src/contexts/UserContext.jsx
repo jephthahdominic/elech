@@ -1,5 +1,7 @@
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getDoc, doc } from "firebase/firestore";
+import { firestoreDb } from "../services/firebaseConfig";
 
 const UserContext = createContext();
 
@@ -11,7 +13,13 @@ function UserProvider({children}){
         const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
             if(currentUser){
                 setUser(currentUser);
-                console.log(currentUser)
+                getDoc(doc(firestoreDb, "users", uid))
+                .then(result =>{
+                    console.log(result)
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
             }
         })
         return () => unsubscribe()

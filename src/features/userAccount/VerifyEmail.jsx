@@ -65,7 +65,7 @@ export function VerificationSuccess(){
     }
 
     addUser();
-    
+
     // return ()=> unsubscribe()
     
   }, []);

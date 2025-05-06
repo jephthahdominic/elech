@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useSidebar } from '../contexts/SidebarContext'
 import { useUser } from '../contexts/UserContext';
 import { BiLogOut, BiSolidDashboard } from 'react-icons/bi';
-import { AiFillDashboard, AiFillShop, AiOutlineCustomerService } from 'react-icons/ai';
+import { AiFillShop, AiOutlineCustomerService } from 'react-icons/ai';
 
 export default function SideBar() {
     const {isSidebarOpen, setIsSidebarOpen} = useSidebar();
