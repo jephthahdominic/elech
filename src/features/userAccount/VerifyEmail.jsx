@@ -60,12 +60,12 @@ export function VerificationSuccess(){
         displayName,
         role
       })
-      return addUserToDb
+      const userAdded = addUserToDb
+      return userAdded
     }
 
-    const userAdded = addUser();
-    console.log(userAdded)
-
+    addUser();
+    
     // return ()=> unsubscribe()
     
   }, []);
