@@ -11,8 +11,7 @@ function UserProvider({children}){
 
     async function getUserFromDb(uid){
         const data = await getDoc(doc(firestoreDb, "users", uid));
-        const currUser = data;
-        return currUser
+        return data
     }
     
     useEffect(()=>{
