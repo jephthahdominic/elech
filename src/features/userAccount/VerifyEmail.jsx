@@ -2,6 +2,8 @@ import { GrStatusGood } from "react-icons/gr";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged, sendEmailVerification } from "firebase/auth";
+import { firestoreDb } from "../../services/firebaseConfig";
+import { setDoc, doc } from "firebase/firestore";
 
 const auth = getAuth();
 
@@ -49,7 +51,14 @@ export default function VerifyEmail() {
 export function VerificationSuccess(){
   const navigate = useNavigate()
   useEffect(()=>{
-    console.log(auth.currentUser)
+    const {displayName, email} = auth.currentUser;
+    const role = email === "elech@admin.com"? "admin":"user";
+    const addUSerToDb = setDoc(doc(firestoreDb, "users", currentUser.uid), {
+      email,
+      displayName,
+      role
+    })
+    console.log(addUSerToDb)
 
     // return ()=> unsubscribe()
     
