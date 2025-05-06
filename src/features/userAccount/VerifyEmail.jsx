@@ -22,8 +22,9 @@ export default function VerifyEmail() {
       if(!currentUser.emailVerified) {
         setCurrentUserEmail(currentUser.email);
         sendEmailVerification(currentUser, actionCodeSettings);
+      }else{
+        navigate('/')
       }
-      navigate('/');
     });
 
     return ()=> unsubscribe()
@@ -47,9 +48,31 @@ export default function VerifyEmail() {
 
 export function VerificationSuccess(){
   const navigate = useNavigate()
-  setTimeout(() => {
-    navigate('/')
-  }, 3000);
+  useEffect(()=>{
+
+    const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
+      if(currentUser.emailVerified) {
+        async function addUserToDb(){
+          const role = currentUser.email==="elech@admin.com" ? "admin" : "user";
+  
+          await setDoc(doc(firestoreDb, "users", user.uid), {
+            email:currentUser.email,
+            userName: currentUser.displayName,
+            role
+          })
+  
+          console.log(`user registered with role ${role}`)
+          navigate('/')
+        }
+        addUserToDb()
+      }else{
+        navigate('/')
+      }
+    });
+
+    return ()=> unsubscribe()
+    
+  }, [navigate]);
   return(
     <div className="h-screen">
       <div className="text-center py-20 px-3 flex flex-col items-center">

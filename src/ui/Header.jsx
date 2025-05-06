@@ -17,7 +17,7 @@ export default function Header({cart, search, noSearchBar}) {
   return (
     <header className='bg-[#fafafad5] xl:bg-[#fafafa] fixed top-0 z-10 h-auto w-full py-3 px-4 shadow shadow-[30px 0 25px 20px rgb(0 0 0 / 0.1)] flex items-center justify-between'>
         <div className='flex-1 flex items-center gap-10'>
-          <Logo />
+          <Link to={'/'}><Logo /></Link>
           <form className='relative w-1/3 flex items-center max-xl:hidden'>
             <FiSearch className="absolute left-2"/>
             <input placeholder='Search for anything here'  className='w-full px-8 py-2 rounded-full
