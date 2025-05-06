@@ -53,12 +53,17 @@ export function VerificationSuccess(){
   useEffect(()=>{
     const {displayName, email, uid} = auth.currentUser;
     const role = email === "elech@admin.com"? "admin":"user";
-    const addUserToDb = setDoc(doc(firestoreDb, "users", uid), {
-      email,
-      displayName,
-      role
-    })
-    console.log(addUserToDb)
+
+    async function addUser(){
+      const addUserToDb = await setDoc(doc(firestoreDb, "users", uid), {
+        email,
+        displayName,
+        role
+      })
+      return addUserToDb
+    }
+
+    console.log(addUser());
 
     // return ()=> unsubscribe()
     
