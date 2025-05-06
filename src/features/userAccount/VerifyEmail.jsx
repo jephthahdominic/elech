@@ -65,8 +65,6 @@ export function VerificationSuccess(){
           navigate('/')
         }
         addUserToDb()
-      }else{
-        navigate('/')
       }
     });
 
