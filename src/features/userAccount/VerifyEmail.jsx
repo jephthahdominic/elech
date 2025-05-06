@@ -63,7 +63,8 @@ export function VerificationSuccess(){
       return addUserToDb
     }
 
-    console.log(addUser());
+    const userAdded = addUser();
+    console.log(userAdded)
 
     // return ()=> unsubscribe()
     
