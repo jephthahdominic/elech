@@ -8,18 +8,19 @@ const UserContext = createContext();
 function UserProvider({children}){
     const auth = getAuth();
     const [user, setUser] = useState(null);
+
+    async function getUserFromDb(uid){
+        const data = await getDoc(doc(firestoreDb, "users", uid));
+        const currUser = data;
+        return currUser
+    }
     
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
+            userRole = getUserFromDb(currentUser.uid)
             if(currentUser){
-                setUser(currentUser);
-                getDoc(doc(firestoreDb, "users", uid))
-                .then(result =>{
-                    console.log(result)
-                })
-                .catch(err=>{
-                    console.log(err)
-                })
+                setUser({...currentUser.user, role:userRole.role}); 
+                console.log(user)
             }
         })
         return () => unsubscribe()
