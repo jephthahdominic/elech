@@ -19,7 +19,7 @@ function UserProvider({children}){
         const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
             userRole = getUserFromDb(currentUser.uid)
             if(currentUser){
-                setUser({...currentUser.user, role:userRole.role}); 
+                setUser({...currentUser, role:userRole.role}); 
                 console.log(user)
             }
         })
