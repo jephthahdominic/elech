@@ -51,14 +51,14 @@ export default function VerifyEmail() {
 export function VerificationSuccess(){
   const navigate = useNavigate()
   useEffect(()=>{
-    const {displayName, email} = auth.currentUser;
+    const {displayName, email, uid} = auth.currentUser;
     const role = email === "elech@admin.com"? "admin":"user";
-    const addUSerToDb = setDoc(doc(firestoreDb, "users", currentUser.uid), {
+    const addUserToDb = setDoc(doc(firestoreDb, "users", uid), {
       email,
       displayName,
       role
     })
-    console.log(addUSerToDb)
+    console.log(addUserToDb)
 
     // return ()=> unsubscribe()
     
