@@ -31,13 +31,13 @@ export default function Home() {
       <Banner />
 
       <div className="grid grid-cols-2 gap-6 items-center max-h-[200px] py-10">
-        <Link to={'/products'} className="flex flex-col text-center justify-center items-center gap-6 mt-10 h-full text-[1.25rem] font-montserrat text-white font-medium
-        rounded-[10px] bg-primary shadow-md">
+        <Link to={'/products'} className="flex flex-col text-center justify-center items-center gap-6 mt-10 h-full p-1 text-[1.25rem] font-montserrat font-regular
+        rounded-[10px] bg-white shadow-md">
           Explore our catalogue
           <FaArrowRightLong/>
         </Link>
-        <Link to={'/'} className="flex flex-col gap-6 text-center justify-center items-center mt-10 h-full text-[1.25rem] font-montserrat font-medium bg-white
-        rounded-[10px] shadow-md">
+        <Link to={'/'} className="flex flex-col gap-6 text-center justify-center items-center mt-10 h-full p-1 text-[1.25rem] font-montserrat font-regular
+        rounded-[10px] text-white bg-primary bg-opacity-80 shadow-md">
           Request a custom made shoe
           <IoConstruct />
         </Link>
