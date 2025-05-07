@@ -29,11 +29,11 @@ export default function SideBar() {
                 </div>
             </header>
             <div className='px-4 relative pb-5 py-2'>
-                <div className='cursor-pointer'>
+                {user?.role === "admin" && <div className='cursor-pointer'>
                     <Link className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>
                         <BiSolidDashboard /> Dashboard
                     </Link>
-                </div>
+                </div>}
                 <div className='mt-8'>
                     <p className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'> 
                         <AiFillShop /> Explore products

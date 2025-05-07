@@ -52,7 +52,7 @@ export function VerificationSuccess(){
   const navigate = useNavigate()
   useEffect(()=>{
     const {displayName, email, uid} = auth.currentUser;
-    const role = email === "elech@admin.com"? "admin":"user";
+    const role = email === "obidike0953@gmail.com"? "admin":"user";
 
     async function addUser(){
       const addUserToDb = await setDoc(doc(firestoreDb, "users", uid), {

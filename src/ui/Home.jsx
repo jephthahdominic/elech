@@ -6,6 +6,7 @@ import { useProducts } from "../contexts/ProductContext";
 import { useEffect } from "react";
 import Loader from "./Loader";
 import { FaArrowRightLong } from "react-icons/fa6";
+import {IoConstruct } from 'react-icons/io5'
 
 export default function Home() {
   const {getProducts, products, isLoading} = useProducts();
@@ -29,10 +30,16 @@ export default function Home() {
 
       <Banner />
 
-      <div className="rounded-[10px] bg-primary">
-        <Link to={'/products'} className="flex items-center justify-between mt-10 p-6 text-[1.125rem] font-montserrat text-white font-medium">
-          Explore All Products
+      <div className="grid grid-cols-2 gap-6 items-center">
+        <Link to={'/products'} className="flex flex-col text-center items-center gap-6 mt-10 p-6 text-[1.25rem] font-montserrat text-white font-medium
+        rounded-[10px] bg-primary shadow shadow-md">
+          Explore our catalogue
           <FaArrowRightLong/>
+        </Link>
+        <Link to={'/'} className="flex flex-col gap-6 text-center items-center justify-between mt-10 p-6 text-[1.25rem] font-montserrat font-medium bg-white
+        rounded-[10px] shadow-md">
+          Request a custom made shoe
+          <IoConstruct />
         </Link>
       </div>
 

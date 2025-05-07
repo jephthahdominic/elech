@@ -9,19 +9,17 @@ function UserProvider({children}){
     const auth = getAuth();
     const [user, setUser] = useState(null);
 
-    async function getUserFromDb(uid){
-        const data = await getDoc(doc(firestoreDb, "users", uid));
-        
-        return data
-    }
+    
     
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
-            const userRole = getUserFromDb(currentUser.uid)
-            if(currentUser){
-                setUser({...currentUser, role:userRole.role}); 
-                console.log(user)
-            }
+            const uid = currentUser.uid
+            getDoc(doc(firestoreDb, "users", uid))
+            .then(result => {
+                const userData = result.data();
+                setUser({...currentUser, role:userData.role}); 
+            })
+            .catch(err=>console.log(err))
         })
         return () => unsubscribe()
     }, [auth])
