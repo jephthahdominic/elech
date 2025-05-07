@@ -30,7 +30,7 @@ export default function SideBar() {
             </header>
             <div className='px-4 relative pb-5 py-2'>
                 {user?.role === "admin" && <div className='cursor-pointer'>
-                    <Link className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>
+                    <Link to={'admin'} className='font-sans text-[1.25rem] mt-4 flex items-center gap-2 border-l-2 border-primary pl-3'>
                         <BiSolidDashboard /> Dashboard
                     </Link>
                 </div>}

@@ -16,6 +16,7 @@ import { SideBarProvider } from "./contexts/SidebarContext"
 import Logout from "./features/userAccount/Logout"
 import Product from "./features/products/Product"
 import { UserProvider } from "./contexts/UserContext"
+import Dashboard from "./features/dashboard/Dashboard"
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,16 @@ const router = createBrowserRouter([
         element: <SearchProducts />,
         errorElement: <Error />
       },
+      //admin dashboard
+      {
+        path: "/admin",
+        element: <Dashboard />,
+        children:[
+          {
+            path: "/addProduct",
+          }
+        ]
+      }
     ]
   },
 
@@ -102,9 +113,10 @@ const router = createBrowserRouter([
         element: <ProtectedRoutes><Cart /></ProtectedRoutes>
       }
     ]
-  }
+  },
 
 ])
+
 
 export default function App() {
   return (
