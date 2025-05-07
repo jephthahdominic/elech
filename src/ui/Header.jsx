@@ -9,8 +9,7 @@ export default function Header({cart, search, noSearchBar}) {
   const {isSidebarOpen, setIsSidebarOpen} = useSidebar();
   const {user} = useUser()
 
-  function handleSidebar(){
-    console.log(isSidebarOpen); 
+  function handleSidebar(){ 
     setIsSidebarOpen((s)=>!s)
   }
 

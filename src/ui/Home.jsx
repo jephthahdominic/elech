@@ -32,7 +32,7 @@ export default function Home() {
 
       <div className="grid grid-cols-2 gap-6 items-center">
         <Link to={'/products'} className="flex flex-col text-center items-center gap-6 mt-10 p-6 text-[1.25rem] font-montserrat text-white font-medium
-        rounded-[10px] bg-primary shadow shadow-md">
+        rounded-[10px] bg-primary shadow-md">
           Explore our catalogue
           <FaArrowRightLong/>
         </Link>
